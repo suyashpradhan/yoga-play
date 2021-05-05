@@ -1,0 +1,117 @@
+.modal {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+}
+
+.modalDialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+}
+
+.modalDialogCentered {
+    min-height: calc(100% - (1.75rem * 2));
+    display: flex;
+    align-items: center;
+}
+
+.modalContent {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    border: 1px solid rgba(0, 0, 0, .2);
+    background: var(--dark);
+    position: relative;
+    z-index: 10;
+    border-radius: .2rem;
+    box-shadow: 0 12px 15px 0 rgb(0 0 0 / 25%);
+}
+
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+    height: 100%;
+    line-height: 1.8;
+    color: #141414;
+    flex: 1 1 auto;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+    border-top-left-radius: .3rem;
+    border-top-right-radius: .3rem;
+}
+
+.modalTitle {
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+}
+
+.modalClose {
+    width: 1rem;
+    cursor: pointer;
+}
+
+.button-transparent {
+    background: transparent;
+    border: none;
+}
+
+.playlist {
+    margin-bottom: .6rem;
+    text-align: left;
+}
+
+.label {
+    font-size: 1rem;
+    margin-left: .6rem;
+    font-weight: 600;
+    color: var(--text-secondary)
+}
+
+.modalFooter {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+.modalFooterTitle {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.formField {
+    background-color: var(--background-dark);
+    border: 1px solid var(--background-dark);
+    padding: .6rem 1rem;
+    border-radius: .3rem;
+    color: var(--text-primary);
+    width: 100%;
+    height: 2.4rem;
+    margin: 0 1rem 0 0;
+}
+
+.formField:focus {
+    outline: none;
+    border: 2px solid var(--primary);
+}

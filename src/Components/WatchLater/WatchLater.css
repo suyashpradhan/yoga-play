@@ -1,0 +1,51 @@
+.cardInfo {
+    position: relative;
+}
+
+.horizontalCard {
+    display: grid;
+    grid-template-columns: 12rem 1fr auto;
+    align-items: center;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 250ms ease-in;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.horizontalCard:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.cardBannerImage {
+    width: 100%;
+    height: 100%;
+}
+
+.leftWrapper {
+    position: relative;
+}
+
+.videoTiming {
+    background-color: var(--background-opaque);
+    color: var(--white);
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: .3rem;
+    font-size: .9rem;
+    border-radius: .3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.actionIcons {
+    height: 1.7rem;
+    width: 1.7rem;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 1rem 0 0;
+}

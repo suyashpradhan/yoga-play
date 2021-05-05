@@ -1,0 +1,45 @@
+.playlistRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
+    margin: 2rem 0;
+}
+
+.playlistCard {
+    border: 1px solid var(--border-light);
+    border-radius: .3rem;
+    position: relative;
+    height: 100%;
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 250ms ease-in;
+}
+
+.cardImage {
+    border-radius: .3rem;
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.videoDuration {
+    background-color: var(--background-opaque);
+    color: var(--white);
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: .3rem;
+    font-size: .9rem;
+    border-radius: .3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.videoTitle {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin: 1rem 0;
+}
+
+.button-danger {
+    display: block;
+}

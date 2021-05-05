@@ -1,0 +1,24 @@
+.playlists {
+    border: 1px solid var(--dark);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: .2rem;
+}
+
+.playlistName {
+    color: var(--white);
+    opacity: .9;
+    font-size: 1rem;
+    flex: 1;
+}
+
+.playlistIcon {
+    color: var(--opaque-black);
+    width: 2.2rem;
+    height: 2.2rem;
+    background-color: var(--dark);
+    padding: .3rem;
+    border-radius: .2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+}

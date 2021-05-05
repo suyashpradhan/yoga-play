@@ -1,0 +1,66 @@
+.container {
+    max-width: 1280px;
+    margin: 0rem auto;
+}
+
+.reactPlayer {
+    margin: 0 auto;
+    height: calc((100vw - 0rem) * 0.7625);
+    width: calc(100vw - 0rem);
+    max-width: 1280px;
+}
+
+.videoStats {
+    margin: 2rem 0 0 0;
+}
+
+.videoStats .totalViews {
+    margin: 0;
+}
+
+.videoDetailsHeader {
+    margin: .2rem 0 1rem 0;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: .6rem;
+}
+
+.buttonTransparent {
+    background: transparent;
+    border: none;
+}
+
+.VideoDetailsIcons {
+    height: 2.6rem;
+    width: 2.6rem;
+    display: block;
+    background-color: var(--background-opaque);
+    padding: .6rem;
+    border-radius: .3rem;
+    margin: 0 0 0 1rem;
+}
+
+.videoDetailsTitle {
+    font-size: 1.4rem;
+    color: var(--white);
+}
+
+.videoDescription {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 1rem 0;
+    display: block;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+@media screen and (min-width: 640px) {
+    .reactPlayer {
+        height: calc((100vw - 2rem) * 0.5625);
+        width: calc(100vw - 2rem);
+        max-width: 1280px;
+    }
+
+    .container {
+        margin-top: 2rem;
+    }
+}
