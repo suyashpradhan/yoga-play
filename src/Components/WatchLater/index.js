@@ -1,1 +1,1 @@
-export { WatchLater } from "./WatchLater.jsx";
+export { WatchLaterCard } from "./WatchLaterCard";

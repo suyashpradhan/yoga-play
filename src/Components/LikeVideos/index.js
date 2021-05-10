@@ -1,1 +1,1 @@
-export { LikeVideos } from "./LikeVideos";
+export { LikedVideoCard } from "./LikedVideoCard";

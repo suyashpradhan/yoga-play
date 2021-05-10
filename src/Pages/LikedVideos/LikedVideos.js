@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { useVideoContext } from "../../Context";
-import { LikedVideoCard } from "./LikedVideoCard";
-import { Sidebar } from "../Sidebar";
-import "./LikeVideos.css";
+import { LikedVideoCard } from "../../Components/LikeVideos";
+import { Sidebar } from "../../Components/Sidebar/";
 
-export const LikeVideos = () => {
+export const LikedVideos = () => {
   const {
     state: { likeVideos },
   } = useVideoContext();

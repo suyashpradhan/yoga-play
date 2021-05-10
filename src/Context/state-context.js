@@ -10,6 +10,7 @@ export const VideoContextProvider = ({ children }) => {
     playlists: [],
     searchedText: "",
     toggleSidebar: true,
+    modal: false,
   });
 
   return (

@@ -1,8 +1,8 @@
-import React from "react";
 import { useVideoContext } from "../../Context";
 import { getVideoDetails } from "../../Utils";
 import Delete from "../../Assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
+import "./LikeVideos.css";
 
 export const LikedVideoCard = ({ videoId }) => {
   const {

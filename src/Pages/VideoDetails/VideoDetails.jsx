@@ -1,15 +1,15 @@
 import "./VideoDetails.css";
 import { useParams } from "react-router";
 import ReactPlayer from "react-player";
-import { Sidebar } from "../Sidebar";
+import { Sidebar } from "../../Components/Sidebar";
 import { useVideoContext } from "../../Context";
-import { getVideoDetails, videoExists } from "../../Utils/";
-import { AddToPlaylistDetails } from "../Playlist/AddToPlaylistDetails";
+import { getVideoDetails, videoExists } from "../../Utils";
 import Like from "../../Assets/images/like.svg";
 import LikeFilled from "../../Assets/images/like-filled.svg";
 import WatchLater from "../../Assets/images/watch_later.svg";
 import Checked from "../../Assets/images/check.svg";
 import { useToastHook } from "../../CustomHook/useToastHook";
+import { AddToPlaylist } from "../../Components/Playlist/AddToPlaylist";
 
 export const VideoDetails = () => {
   const toast = useToastHook(3000);
@@ -82,7 +82,7 @@ export const VideoDetails = () => {
                     </button>
                   )}
                   <button className="buttonTransparent">
-                    <AddToPlaylistDetails videoId={id} />
+                    <AddToPlaylist videoId={id} />
                   </button>
                   {videoExists(watchLater, id) ? (
                     <button className="buttonTransparent">

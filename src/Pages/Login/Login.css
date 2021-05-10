@@ -1,0 +1,59 @@
+.loginWrapper {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 6rem 0;
+}
+
+.loginCard {
+    background-color: #000000;
+    border: 1px solid var(--border-light);
+    padding: 3rem;
+    border-radius: .2rem;
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 30rem;
+    margin: 0 1rem;
+}
+
+.loginCardHeader {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--white);
+    margin: 0 0 3rem 0;
+    display: block;
+}
+
+.formGroup {
+    margin-bottom: 2rem;
+}
+
+.formGroup .label {
+    margin: 0 0 .2rem 0;
+    display: inline-block;
+    font-weight: 400;
+}
+
+.loginButton {
+    margin: 3rem 0 0 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    padding: .6rem 0;
+}
+
+.registerLink {
+    color: var(--opaque-black);
+    margin: 3rem 0 0 0;
+    padding: 0;
+    display: block;
+    font-size: 1rem;
+}
+
+.registerLink span {
+    color: var(--primary);
+    font-weight: 600;
+}

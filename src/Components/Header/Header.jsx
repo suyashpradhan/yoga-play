@@ -2,8 +2,9 @@ import React from "react";
 import { useVideoContext } from "../../Context";
 import { FaBars } from "react-icons/fa";
 import { AiFillGithub } from "react-icons/ai";
+import { BiChevronRight } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import Logo from "../../Assets/images/logo_2.svg";
+import Logo from "../../Assets/images/Logo.svg";
 import Close from "../../Assets/images/cancel.svg";
 import "./Header.css";
 
@@ -22,7 +23,6 @@ export const Header = () => {
         />
         <Link to="/">
           <img src={Logo} alt="logo" className="logo"></img>
-          <span className="logoText">YOGAPLAY</span>
         </Link>
       </div>
       <div className="middleNavBar">
@@ -59,12 +59,25 @@ export const Header = () => {
         </a>
         <a
           href="https://www.notion.so/Changelog-e738c781dfe844c89c97e191875febc4"
-          className="link link-white mL1"
+          className="link link-white mL1 mR1"
           target="_blank"
           rel="noreferrer"
         >
-          V1
+          View Changelog
         </a>
+        <Link to="login">
+          <button className="button button-primary">
+            Sign in
+            <BiChevronRight
+              style={{
+                height: "1.4rem",
+                width: "1.4rem",
+                textAlign: "right",
+                verticalAlign: "middle",
+              }}
+            />
+          </button>
+        </Link>
       </div>
     </nav>
   );

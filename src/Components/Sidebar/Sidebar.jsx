@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { RiPlayList2Line } from "react-icons/ri";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineHistory } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { useVideoContext } from "../../Context";
 
@@ -36,6 +37,12 @@ export const Sidebar = () => {
           <AiFillHeart className="sidebarIcon" />
           <Link to="/liked-videos">
             <span>Liked Videos</span>
+          </Link>
+        </li>
+        <li className="sidebarLists j-content-start a-items-center">
+          <AiOutlineHistory className="sidebarIcon" />
+          <Link to="/history">
+            <span>History</span>
           </Link>
         </li>
       </ul>
