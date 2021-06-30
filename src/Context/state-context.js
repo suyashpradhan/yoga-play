@@ -11,6 +11,7 @@ export const VideoContextProvider = ({ children }) => {
     searchedText: "",
     toggleSidebar: true,
     modal: false,
+    loader: false,
   });
 
   return (

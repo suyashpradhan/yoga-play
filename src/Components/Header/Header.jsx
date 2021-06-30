@@ -49,22 +49,15 @@ export const Header = () => {
           ></img>
         </div>
       </div>
-      <div className="rightNavBar flex j-space-between a-items-center">
+      <div className="rightNavBar  flex j-space-between a-items-center">
         <a
           href="https://github.com/suyashpradhan"
           target="_blank"
           rel="noreferrer"
         >
-          <AiFillGithub className="icon" />
+          <AiFillGithub className="icon mR1" />
         </a>
-        <a
-          href="https://www.notion.so/Changelog-e738c781dfe844c89c97e191875febc4"
-          className="link link-white mL1 mR1"
-          target="_blank"
-          rel="noreferrer"
-        >
-          View Changelog
-        </a>
+
         <Link to="login">
           <button className="button button-primary">
             Sign in

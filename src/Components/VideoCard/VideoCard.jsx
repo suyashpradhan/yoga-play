@@ -25,7 +25,7 @@ export const VideoCard = ({ videoId }) => {
     channelName,
     title,
     publishedDate,
-    statistics: { viewCount },
+    statistics: { viewsCount },
   } = getVideoDetails(videos, videoId);
 
   return (
@@ -51,7 +51,7 @@ export const VideoCard = ({ videoId }) => {
           <h3 className="channelName">{channelName}</h3>
           <h1 className="videoTitle">{title}</h1>
           <img src={View} alt="view" className="cardIcon" />
-          <h4 className="totalViews">{viewCount} views</h4>
+          <h4 className="totalViews">{viewsCount} views</h4>
           <h5 className="publishedDate"> • {publishedDate}</h5>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { useVideoContext } from "../../Context";
 import { Sidebar } from "../Sidebar";
 import { VideosList } from "../VideosList";
 

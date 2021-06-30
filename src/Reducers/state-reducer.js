@@ -1,23 +1,14 @@
 import { v4 as uuid } from "uuid";
-
-export const ACTIONS = {
-  TOGGLE_MODAL: "TOGGLE_MODAL",
-  ALL_VIDEOS: "ALL_VIDEOS",
-  SEARCH_VIDEO: "SEARCH_VIDEO",
-  CLEAR_SEARCH: "CLEAR_SEARCH",
-  LIKE_VIDEO: "ADD_TO_LIKE_VIDEOS",
-  UNLIKE_VIDEO: "REMOVE_FROM_LIKE_VIDEOS",
-  WATCH_LATER: "ADD_TO_WATCH_LATER",
-  REMOVE_FROM_WATCH_LATER: "REMOVE_FROM_WATCH_LATER",
-  CREATE_NEW_PLAYLIST: "CREATE_NEW_PLAYLIST",
-  TOGGLE_PLAYLIST: "TOGGLE_PLAYLIST",
-  DELETE_VIDEO_FROM_PLAYLISTS: "DELETE_VIDEO_FROM_PLAYLISTS",
-  DELETE_PLAYLIST: "DELETE_PLAYLIST",
-  TOGGLE_SIDEBAR: "TOGGLE_SIDEBAR",
-};
+import { ACTIONS } from "./ACTIONS";
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case ACTIONS.LOADER:
+      return {
+        ...state,
+        loader: !state.loader,
+      };
+
     case ACTIONS.TOGGLE_MODAL:
       return {
         ...state,
