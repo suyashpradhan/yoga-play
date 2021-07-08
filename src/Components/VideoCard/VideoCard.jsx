@@ -8,7 +8,7 @@ import { getVideoDetails, videoExists } from "../../Utils/utils";
 import { useToastHook } from "../../CustomHook/useToastHook";
 import { AddToPlaylist } from "../Playlist/AddToPlaylist";
 
-export const VideoCard = ({ videoId }) => {
+export const VideoCard = ({ _id }) => {
   const navigate = useNavigate();
   const toast = useToastHook(3000);
 
@@ -18,7 +18,7 @@ export const VideoCard = ({ videoId }) => {
   } = useVideoContext();
 
   const {
-    id,
+    videoId,
     thumbnailUrl,
     duration,
     channelImageUrl,
@@ -26,14 +26,14 @@ export const VideoCard = ({ videoId }) => {
     title,
     publishedDate,
     statistics: { viewsCount },
-  } = getVideoDetails(videos, videoId);
+  } = getVideoDetails(videos, _id);
 
   return (
     <div className="card">
       <div
         className="cardInner"
         onClick={() => {
-          navigate(`/video/${id}`);
+          navigate(`/video/${_id}`);
         }}
       >
         <div className="cardHeader">
@@ -63,7 +63,7 @@ export const VideoCard = ({ videoId }) => {
           alt="watch_later"
           className="cardHeaderIcon watchLaterIcon"
           onClick={() => {
-            dispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: id });
+            dispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: _id });
             toast("error", "Video Removed from Watch Later");
           }}
         ></img>
@@ -74,7 +74,7 @@ export const VideoCard = ({ videoId }) => {
           alt="watch_later"
           className="cardHeaderIcon watchLaterIcon"
           onClick={() => {
-            dispatch({ type: "ADD_TO_WATCH_LATER", payload: id });
+            dispatch({ type: "ADD_TO_WATCH_LATER", payload: _id });
             toast("success", "Video Added to Watch Later");
           }}
         ></img>

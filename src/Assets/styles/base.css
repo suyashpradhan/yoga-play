@@ -4,7 +4,7 @@
 @import "./component.css";
 
 :root {
-    --primary: #0c6ff9;
+    --primary: #005BFF;
     --secondary: #3a3a3d;
     --background-light: #1f1f23;
     --background-medium: #0e0e10;
@@ -12,7 +12,7 @@
     --background-opaque: #000000cc;
     --text-primary: #ffffff;
     --text-secondary: #adadb8;
-    --hover-secondary: #0345ec;
+    --hover-secondary: #0839b8;
     --border-light: #ffffff1a;
     --opaque-black: #ffffff79;
     --dark: #18181b;
@@ -196,5 +196,5 @@ table {
 
 .body {
     background-color: var(--background-medium);
-    height:100vh;
+    height: 100vh;
 }

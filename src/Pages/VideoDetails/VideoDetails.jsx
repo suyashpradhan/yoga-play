@@ -10,10 +10,11 @@ import WatchLater from "../../Assets/images/watch_later.svg";
 import Checked from "../../Assets/images/check.svg";
 import { useToastHook } from "../../CustomHook/useToastHook";
 import { AddToPlaylist } from "../../Components/Playlist/AddToPlaylist";
+import { addVideoToFavourites } from "../../ServerRequests";
 
 export const VideoDetails = () => {
   const toast = useToastHook(3000);
-  const { id } = useParams();
+  const { _id } = useParams();
   const {
     state: { videos, likeVideos, watchLater },
     dispatch,
@@ -24,7 +25,7 @@ export const VideoDetails = () => {
     description,
     publishedDate,
     statistics: { viewCount },
-  } = getVideoDetails(videos, id);
+  } = getVideoDetails(videos, _id);
 
   return (
     <>
@@ -34,7 +35,7 @@ export const VideoDetails = () => {
           <div className="container">
             <div className="reactPlayer">
               <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${id}`}
+                url={`https://www.youtube.com/watch?v=`}
                 controls={true}
                 playing={true}
                 width="100%"
@@ -50,14 +51,14 @@ export const VideoDetails = () => {
               <div className="videoDetailsHeader flex j-space-between a-items-center">
                 <h1 className="videoDetailsTitle">{title}</h1>
                 <div className="videoDetailsIconWrapper">
-                  {videoExists(likeVideos, id) ? (
+                  {videoExists(likeVideos, _id) ? (
                     <button className="buttonTransparent">
                       <img
                         src={LikeFilled}
                         onClick={() => {
                           dispatch({
                             type: "REMOVE_FROM_LIKE_VIDEOS",
-                            payload: id,
+                            payload: _id,
                           });
                           toast("error", "Video removed from like videos ");
                         }}
@@ -70,10 +71,7 @@ export const VideoDetails = () => {
                       <img
                         src={Like}
                         onClick={() => {
-                          dispatch({
-                            type: "ADD_TO_LIKE_VIDEOS",
-                            payload: id,
-                          });
+                          addVideoToFavourites(_id, dispatch);
                           toast("error", "Video added to like videos ");
                         }}
                         alt="likeVideo"
@@ -81,7 +79,8 @@ export const VideoDetails = () => {
                       />
                     </button>
                   )}
-                  <button className="buttonTransparent">
+
+                  {/* <button className="buttonTransparent">
                     <AddToPlaylist videoId={id} />
                   </button>
                   {videoExists(watchLater, id) ? (
@@ -108,12 +107,15 @@ export const VideoDetails = () => {
                         title="Add to watch later"
                         className="VideoDetailsIcons"
                         onClick={() => {
-                          dispatch({ type: "ADD_TO_WATCH_LATER", payload: id });
+                          dispatch({
+                            type: "ADD_TO_WATCH_LATER",
+                            payload: id,
+                          });
                           toast("error", "Video added to watch later");
                         }}
                       />
                     </button>
-                  )}
+                  )} */}
                 </div>
               </div>
               <p className="videoDescription">{description}</p>

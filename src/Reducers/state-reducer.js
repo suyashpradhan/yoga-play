@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { videoExists } from "../Utils";
 import { ACTIONS } from "./ACTIONS";
 
 export const reducer = (state, action) => {
@@ -39,18 +40,15 @@ export const reducer = (state, action) => {
         searchedText: "",
       };
 
-    case ACTIONS.LIKE_VIDEO:
-      return {
-        ...state,
-        likeVideos: [...state.likeVideos, action.payload],
-      };
+    case ACTIONS.SET_FAVOURITES:
+      return { ...state, likedVideos: action.payload };
 
-    case ACTIONS.UNLIKE_VIDEO:
+    case ACTIONS.TOGGLE_FAVOURITES:
       return {
         ...state,
-        likeVideos: state.likeVideos.filter(
-          (video) => video !== action.payload
-        ),
+        favourites: videoExists(state.favourites, action.payload)
+          ? state.favourites.filter((video) => video !== action.payload)
+          : state.favourites.concat(action.payload),
       };
 
     case ACTIONS.WATCH_LATER:

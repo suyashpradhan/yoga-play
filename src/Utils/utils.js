@@ -1,5 +1,5 @@
 export const getVideoDetails = (videos, videoId) => {
-  return videos.find((video) => video.id === videoId);
+  return videos.find((video) => video._id === videoId);
 };
 
 export const videoExists = (videos, id) => {
@@ -17,4 +17,12 @@ export const updatePlaylist = (playlistId, videoId, dispatch) => {
     type: "TOGGLE_PLAYLIST",
     payload: { playlistId, videoId },
   });
+};
+
+export const isUserLoggedIn = ({ callback, isLoggedIn }) => {
+  if (isLoggedIn) {
+    callback();
+  } else {
+    alert("User not logged In!");
+  }
 };

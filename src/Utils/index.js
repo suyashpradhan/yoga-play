@@ -1,1 +1,6 @@
-export { getVideoDetails, getFilteredVideo, videoExists } from "./utils";
+export {
+  getVideoDetails,
+  getFilteredVideo,
+  videoExists,
+  isUserLoggedIn,
+} from "./utils";

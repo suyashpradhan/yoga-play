@@ -1,1 +1,1 @@
-export { allVideos, singleVideo } from "./urls";
+export { baseURL, fetchAllVideos, singleVideo, register, login } from "./urls";

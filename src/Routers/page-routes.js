@@ -5,9 +5,10 @@ import { Home } from "../Components/Home";
 import { VideoDetails } from "../Pages/VideoDetails";
 import { WatchLater } from "../Pages/WatchLater";
 import { Playlists } from "../Pages/Playlist";
-import { Login } from "../Pages/Login/Login";
+import { Login } from "../Pages/Login/";
 import { LikedVideos } from "../Pages/LikedVideos";
 import { PrivateRoutes } from "./private-routes";
+import { Register } from "../Pages/register";
 
 export const PageRoutes = () => {
   return (
@@ -38,7 +39,7 @@ export const PageRoutes = () => {
         ></PrivateRoutes>
 
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
       </Routes>
     </>
   );

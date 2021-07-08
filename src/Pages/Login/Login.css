@@ -18,8 +18,8 @@
 
 .loginCardHeader {
     text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 500;
     color: var(--white);
     margin: 0 0 3rem 0;
     display: block;

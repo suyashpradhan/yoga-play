@@ -5,7 +5,7 @@ const VideoContext = createContext();
 export const VideoContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {
     videos: [],
-    likeVideos: [],
+    favourites: [],
     watchLater: [],
     playlists: [],
     searchedText: "",
