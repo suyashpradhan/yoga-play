@@ -1,9 +1,9 @@
 import "./VideoDetails.css";
-import { useParams } from "react-router";
+import { useLocation } from "react-router";
 import ReactPlayer from "react-player";
 import { Sidebar } from "../../Components/Sidebar";
 import { useVideoContext } from "../../Context";
-import { getVideoDetails, videoExists } from "../../Utils";
+import { videoExists } from "../../Utils";
 import Like from "../../Assets/images/like.svg";
 import LikeFilled from "../../Assets/images/like-filled.svg";
 import WatchLater from "../../Assets/images/watch_later.svg";
@@ -14,18 +14,24 @@ import { addVideoToFavourites } from "../../ServerRequests";
 
 export const VideoDetails = () => {
   const toast = useToastHook(3000);
-  const { _id } = useParams();
   const {
-    state: { videos, likeVideos, watchLater },
+    state: { videoDetailsFromState },
+  } = useLocation();
+  const {
+    state: { favourites, watchLater },
     dispatch,
   } = useVideoContext();
 
+  console.log(favourites);
+
   const {
+    _id,
+    videoId,
     title,
-    description,
     publishedDate,
-    statistics: { viewCount },
-  } = getVideoDetails(videos, _id);
+    description,
+    statistics: { viewsCount },
+  } = videoDetailsFromState;
 
   return (
     <>
@@ -35,7 +41,7 @@ export const VideoDetails = () => {
           <div className="container">
             <div className="reactPlayer">
               <ReactPlayer
-                url={`https://www.youtube.com/watch?v=`}
+                url={`https://www.youtube.com/watch?v=${videoId}`}
                 controls={true}
                 playing={true}
                 width="100%"
@@ -45,25 +51,22 @@ export const VideoDetails = () => {
             </div>
             <div className="videoDetails">
               <div className="videoStats">
-                <h4 className="totalViews">{viewCount} views</h4>
+                <h4 className="totalViews">{viewsCount} views</h4>
                 <h5 className="publishedDate"> • {publishedDate}</h5>
               </div>
               <div className="videoDetailsHeader flex j-space-between a-items-center">
                 <h1 className="videoDetailsTitle">{title}</h1>
                 <div className="videoDetailsIconWrapper">
-                  {videoExists(likeVideos, _id) ? (
+                  {videoExists(favourites, _id) ? (
                     <button className="buttonTransparent">
                       <img
                         src={LikeFilled}
-                        onClick={() => {
-                          dispatch({
-                            type: "REMOVE_FROM_LIKE_VIDEOS",
-                            payload: _id,
-                          });
-                          toast("error", "Video removed from like videos ");
-                        }}
                         alt="likeVideo"
                         className="VideoDetailsIcons"
+                        onClick={() => {
+                          addVideoToFavourites(_id, dispatch);
+                          toast("error", "Video removed from favourites ");
+                        }}
                       />
                     </button>
                   ) : (
@@ -72,7 +75,7 @@ export const VideoDetails = () => {
                         src={Like}
                         onClick={() => {
                           addVideoToFavourites(_id, dispatch);
-                          toast("error", "Video added to like videos ");
+                          toast("error", "Video added to favourites ");
                         }}
                         alt="likeVideo"
                         className="VideoDetailsIcons"
@@ -80,10 +83,10 @@ export const VideoDetails = () => {
                     </button>
                   )}
 
-                  {/* <button className="buttonTransparent">
-                    <AddToPlaylist videoId={id} />
+                  <button className="buttonTransparent">
+                    <AddToPlaylist videoId={_id} />
                   </button>
-                  {videoExists(watchLater, id) ? (
+                  {videoExists(watchLater, _id) ? (
                     <button className="buttonTransparent">
                       <img
                         src={Checked}
@@ -93,7 +96,7 @@ export const VideoDetails = () => {
                         onClick={() => {
                           dispatch({
                             type: "REMOVE_FROM_WATCH_LATER",
-                            payload: id,
+                            payload: _id,
                           });
                           toast("error", "Video Removed from Watch Later");
                         }}
@@ -109,13 +112,13 @@ export const VideoDetails = () => {
                         onClick={() => {
                           dispatch({
                             type: "ADD_TO_WATCH_LATER",
-                            payload: id,
+                            payload: _id,
                           });
                           toast("error", "Video added to watch later");
                         }}
                       />
                     </button>
-                  )} */}
+                  )}
                 </div>
               </div>
               <p className="videoDescription">{description}</p>

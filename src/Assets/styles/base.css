@@ -17,7 +17,8 @@
     --opaque-black: #ffffff79;
     --dark: #18181b;
     --white: #ffffff;
-    --danger: #f84545
+    --danger: #f84545;
+    --red: #ff0000
 }
 
 * {

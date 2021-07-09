@@ -2,8 +2,8 @@ export const getVideoDetails = (videos, videoId) => {
   return videos.find((video) => video._id === videoId);
 };
 
-export const videoExists = (videos, id) => {
-  return videos.some((videoId) => videoId === id);
+export const videoExists = (videos, _id) => {
+  return videos.some((id) => id === _id);
 };
 
 export const getFilteredVideo = (videos, searchedValue) => {

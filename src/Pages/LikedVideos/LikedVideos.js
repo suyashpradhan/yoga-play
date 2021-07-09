@@ -5,7 +5,7 @@ import { Sidebar } from "../../Components/Sidebar/";
 
 export const LikedVideos = () => {
   const {
-    state: { likeVideos },
+    state: { favourites },
   } = useVideoContext();
 
   return (
@@ -15,9 +15,9 @@ export const LikedVideos = () => {
           <Sidebar />
           <h1 className="pageHeader">Liked Videos</h1>
 
-          {likeVideos.length === 0
+          {favourites.length === 0
             ? ""
-            : likeVideos.map((id) => <LikedVideoCard key={id} videoId={id} />)}
+            : favourites.map((_id) => <LikedVideoCard key={_id} _id={_id} />)}
         </div>
       </main>
     </>

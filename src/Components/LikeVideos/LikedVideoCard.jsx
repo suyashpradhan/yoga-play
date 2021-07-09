@@ -4,16 +4,16 @@ import Delete from "../../Assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
 import "./LikeVideos.css";
 
-export const LikedVideoCard = ({ videoId }) => {
+export const LikedVideoCard = ({ _id }) => {
   const {
     state: { videos },
     dispatch,
   } = useVideoContext();
 
-  const { title, thumbnailUrl, duration, channelName } = getVideoDetails(
-    videos,
-    videoId
-  );
+  console.log(_id);
+
+  const { title, thumbnailUrl, duration, channelName, videoId } =
+    getVideoDetails(videos, _id);
 
   return (
     <div className="horizontalCard">
@@ -34,14 +34,7 @@ export const LikedVideoCard = ({ videoId }) => {
         </Link>
       </div>
       <div className="rightWrapper">
-        <img
-          src={Delete}
-          className="actionIcons"
-          alt="delete"
-          onClick={() =>
-            dispatch({ type: "REMOVE_FROM_LIKE_VIDEOS", payload: videoId })
-          }
-        ></img>
+        <img src={Delete} className="actionIcons" alt="delete"></img>
       </div>
     </div>
   );

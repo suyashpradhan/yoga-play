@@ -49,6 +49,12 @@
     color: var(--white);
 }
 
+.button-red {
+    background-color: var(--red);
+    border: 1px solid var(--red);
+    color: var(--white);
+}
+
 /*Links*/
 .link {
     background: transparent;

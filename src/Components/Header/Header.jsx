@@ -7,12 +7,17 @@ import { Link } from "react-router-dom";
 import Logo from "../../Assets/images/Logo.svg";
 import Close from "../../Assets/images/cancel.svg";
 import "./Header.css";
+import { useAuth } from "../../Context/auth-context";
 
 export const Header = () => {
   const {
     state: { searchedText },
     dispatch,
   } = useVideoContext();
+
+  const {
+    userAuthState: { isLoggedIn },
+  } = useAuth();
 
   return (
     <nav className="navBar flex pT1 pB1 j-space-between a-items-center pR1 pL1">
@@ -58,19 +63,23 @@ export const Header = () => {
           <AiFillGithub className="icon mR1" />
         </a>
 
-        <Link to="login">
-          <button className="button button-primary">
-            Sign in
-            <BiChevronRight
-              style={{
-                height: "1.4rem",
-                width: "1.4rem",
-                textAlign: "right",
-                verticalAlign: "middle",
-              }}
-            />
-          </button>
-        </Link>
+        {isLoggedIn ? (
+          <button className="button button-red">Logout</button>
+        ) : (
+          <Link to="login">
+            <button className="button button-primary">
+              Sign in
+              <BiChevronRight
+                style={{
+                  height: "1.4rem",
+                  width: "1.4rem",
+                  textAlign: "right",
+                  verticalAlign: "middle",
+                }}
+              />
+            </button>
+          </Link>
+        )}
       </div>
     </nav>
   );

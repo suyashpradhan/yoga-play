@@ -41,7 +41,7 @@ export const reducer = (state, action) => {
       };
 
     case ACTIONS.SET_FAVOURITES:
-      return { ...state, likedVideos: action.payload };
+      return { ...state, favourites: action.payload };
 
     case ACTIONS.TOGGLE_FAVOURITES:
       return {
