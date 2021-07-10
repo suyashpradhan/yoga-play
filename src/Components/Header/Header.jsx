@@ -4,7 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { AiFillGithub } from "react-icons/ai";
 import { BiChevronRight } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import Logo from "../../Assets/images/Logo.svg";
+import Logo from "../../Assets/images/logo.svg";
 import Close from "../../Assets/images/cancel.svg";
 import "./Header.css";
 import { useAuth } from "../../Context/auth-context";
