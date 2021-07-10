@@ -1,0 +1,87 @@
+ @import "../../Assets/styles/base.css";
+
+ .navBar {
+     background-color: var(--dark);
+ }
+
+ .menuIcon {
+     height: 2.4rem;
+     width: 2.4rem;
+     color: var(--opaque-black);
+     margin-right: 1rem;
+     vertical-align: middle;
+     border: 1px solid var(--border-light);
+     box-shadow: 0 0 10px 0 rgb(0 0 0 / 40%);
+     padding: .6rem;
+     border-radius: .2rem;
+     cursor: pointer;
+     background-color: (--dark);
+ }
+
+ .menuIcon:hover {
+     color: var(--white);
+     background-color: var(--primary);
+ }
+
+ .logo {
+     width: 12rem;
+     height: 100%;
+     vertical-align: middle;
+ }
+
+ .logoText {
+     color: var(--white);
+     display: inline-flex;
+     font-size: 1.4rem;
+     font-weight: 500;
+     margin-left: .4rem;
+     text-transform: uppercase;
+ }
+
+ .icon {
+     width: 2rem;
+     height: 2rem;
+     color: #FFF;
+     vertical-align: middle;
+ }
+
+ .middleNavBar {
+     position: relative;
+     width: 100%;
+     flex: 1;
+     margin: 0 2rem;
+ }
+
+ .searchField {
+     background-color: var(--background-dark);
+     border: 1px solid var(--background-dark);
+     padding: .6rem 1rem;
+     border-radius: .3rem;
+     color: var(--text-primary);
+     width: 100%;
+     height: 2.8rem;
+ }
+
+ .searchIconWrapper {
+     position: absolute;
+     background-color: var(--background-medium);
+     right: 0;
+     top: 0;
+     height: 2.8rem;
+     cursor: pointer;
+     padding: 0.8rem .6rem;
+ }
+
+ .searchIcon {
+     height: 1.2rem;
+     width: 1.2rem;
+ }
+
+ .searchIconWrapper:focus {
+     border: 2px solid var(--primary) !important;
+ }
+
+ .searchField:focus {
+     border: 2px solid var(--primary) !important;
+     outline: none;
+ }

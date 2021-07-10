@@ -1,0 +1,56 @@
+.main {
+    position: absolute;
+    top: 5.1rem;
+    bottom: 0;
+    right: 0;
+    padding: 0 1rem;
+    overflow: auto;
+    margin-bottom: 2rem;
+    left: 18rem;
+    width: calc(100% - 18rem);
+}
+
+.mainToggled{
+    left: 0 !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+
+.mainContent{
+    margin: 1.6rem 0;
+    padding: 0 1rem;
+}
+
+.errorImage {
+    display: block;
+    margin: 0 auto;
+    height: 40rem;
+    width: 40rem;
+}
+
+.errorText {
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--text-secondary);
+    margin: 1rem 0;
+}
+
+.pageHeader {
+    margin: 3rem 0;
+    color: var(--white);
+    font-size: 2.2rem;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: .6rem;
+}
+
+.loaderRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    left: 18rem;
+    width: calc(100% - 18rem);
+    position: absolute;
+    top: 5.1rem;
+}

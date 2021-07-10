@@ -1,0 +1,45 @@
+.sidebar {
+    position: fixed;
+    display: block;
+    top: 5rem;
+    bottom: 0;
+    left: 0;
+    width: 16rem;
+    max-width: 100%;
+    height: calc(100vh - 80px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 20;
+    background-color: var(--background-light);
+    border-right: 1px solid var(--background-light);
+    padding: 1rem 1rem 0 1rem;
+    transition: left 300ms;
+}
+
+.sidebarToggled {
+    left: -100% !important;
+    display: none !important;
+}
+
+.sidebarLists {
+    padding: 2rem .6rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sidebarIcon {
+    height: 1.2rem;
+    width: 1.2rem;
+    color: var(--opaque-black);
+    vertical-align: text-bottom;
+}
+
+.sidebarLists span {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-left: 1.6rem;
+}
+
+.sidebarLists:hover {
+    background-color: var(--dark);
+    color: var(--white);
+}

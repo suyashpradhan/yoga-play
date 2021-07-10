@@ -1,0 +1,125 @@
+.cardRow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+
+.card {
+    border: 1px solid var(--border-light);
+    border-radius: .3rem;
+    position: relative;
+    height: 100%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+    transition: box-shadow 250ms ease-in;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.cardImage {
+    border-radius: .3rem;
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.cardHeader {
+    cursor: pointer;
+}
+
+.cardHeaderIcon {
+    height: 1.8rem;
+    width: 1.8rem;
+    background-color: var(--background-opaque);
+    position: absolute;
+    padding: .3rem;
+    cursor: pointer;
+    border-radius: .2rem;
+    display: none;
+
+}
+
+.card:hover .cardHeaderIcon {
+    display: inline-block;
+}
+
+.likeIcon {
+    top: 1rem;
+    left: 1rem;
+}
+
+.watchLaterIcon {
+    top: 1rem;
+    left: 3.2rem;
+}
+
+.cardBody {
+    padding: 1rem;
+    position: relative;
+}
+
+.channelImageUrl {
+    border: 2px solid var(--primary);
+    border-radius: 6rem;
+    vertical-align: middle;
+    position: absolute;
+    top: -2rem;
+    right: 1rem;
+}
+
+.channelName {
+    font-size: .9rem;
+    color: var(--text-secondary);
+    margin: 0 0 1rem 0;
+}
+
+.videoTitle {
+    font-size: 1.2rem;
+    color: var(--white);
+    margin: 1rem 0;
+}
+
+.cardIcon {
+    height: 1rem;
+    width: 1rem;
+    vertical-align: text-bottom;
+}
+
+.totalViews {
+    font-size: .8rem;
+    color: var(--text-secondary);
+    margin: .6rem 0 0 .4rem;
+    display: inline;
+}
+
+.videoDuration {
+    background-color: var(--background-opaque);
+    color: var(--white);
+    width: fit-content;
+    padding: .3rem;
+    font-size: .9rem;
+    border-radius: .3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.publishedDate {
+    color: var(--text-secondary);
+    display: inline;
+}
+
+@media screen and (max-width:600px) and (min-width:0) {
+    .cardRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width:836px) and (min-width:601px) {
+    .cardRow {
+        grid-template-columns: 1fr 1fr;
+    }
+}
