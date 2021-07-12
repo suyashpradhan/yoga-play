@@ -15,11 +15,11 @@ export const fetchFavouriteVideosList = async (dispatch) => {
 
 export const addVideoToFavourites = async (_id, dispatch) => {
   try {
-    const response = await axios.post(favourites, {
+    const { data } = await axios.post(favourites, {
       _id: _id,
     });
-    console.log(response);
-    if (response.status === 201) {
+    console.log(data);
+    if (data.success) {
       dispatch({
         type: "TOGGLE_FAVOURITES",
         payload: _id,

@@ -14,10 +14,10 @@ export const LikedVideos = () => {
         <div className="pageLayout">
           <Sidebar />
           <h1 className="pageHeader">Liked Videos</h1>
-
-          {favourites.length === 0
-            ? ""
-            : favourites.map((_id) => <LikedVideoCard key={_id} _id={_id} />)}
+          {favourites.length === 0 && <p>no videos</p>}
+          {favourites.map((_id) => (
+            <LikedVideoCard key={_id} _id={_id} />
+          ))}
         </div>
       </main>
     </>

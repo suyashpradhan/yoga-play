@@ -9,6 +9,7 @@ import { Login } from "../Pages/Login/";
 import { LikedVideos } from "../Pages/LikedVideos";
 import { PrivateRoutes } from "./private-routes";
 import { Register } from "../Pages/register";
+import { WatchHistory } from "../Pages/watch-history";
 
 export const PageRoutes = () => {
   return (
@@ -35,9 +36,8 @@ export const PageRoutes = () => {
         <PrivateRoutes
           exact
           path="/history"
-          element={<Playlists />}
+          element={<WatchHistory />}
         ></PrivateRoutes>
-
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
       </Routes>
