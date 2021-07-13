@@ -3,8 +3,12 @@ import { useVideoContext } from "../../Context";
 import { getVideoDetails } from "../../Utils";
 import Delete from "../../Assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
+import { toggleWatchLaterVideos } from "../../ServerRequests";
+import { useToastHook } from "../../CustomHook/useToastHook";
 
 export const WatchLaterCard = ({ id }) => {
+  const toast = useToastHook(3000);
+
   const {
     state: { videos },
     dispatch,
@@ -38,9 +42,10 @@ export const WatchLaterCard = ({ id }) => {
           src={Delete}
           className="actionIcons"
           alt="delete"
-          onClick={() =>
-            dispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: id })
-          }
+          onClick={() => {
+            toggleWatchLaterVideos(id, dispatch);
+            toast("error", "Video Removed from Watch Later");
+          }}
         ></img>
       </div>
     </div>

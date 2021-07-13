@@ -3,15 +3,17 @@ import View from "../../Assets/images/view.svg";
 import WatchLater from "../../Assets/images/watch_later.svg";
 import Checked from "../../Assets/images/check.svg";
 import { useVideoContext } from "../../Context";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { videoExists } from "../../Utils/utils";
 import { useToastHook } from "../../CustomHook/useToastHook";
 import { AddToPlaylist } from "../Playlist/AddToPlaylist";
 import { addVideoInHistory } from "../../ServerRequests";
+import { toggleWatchLaterVideos } from "../../ServerRequests";
+import { useAuth } from "../../Context/auth-context";
 
 export const VideoCard = ({ _id }) => {
   const toast = useToastHook(3000);
-
+  const navigate = useNavigate();
   const {
     state: { videos, watchLater },
     dispatch,
@@ -30,6 +32,10 @@ export const VideoCard = ({ _id }) => {
     channelName,
     statistics: { viewsCount },
   } = videoDetailsFromState;
+
+  const {
+    userAuthState: { isLoggedIn },
+  } = useAuth();
 
   return (
     <>
@@ -58,15 +64,15 @@ export const VideoCard = ({ _id }) => {
             </div>
           </div>
         </Link>
-        <AddToPlaylist videoId={videoId} />
-        {videoExists(watchLater, videoId) ? (
+        <AddToPlaylist videoId={videoId} _id={_id} />
+        {videoExists(watchLater, _id) ? (
           <img
             src={Checked}
             title="Added to watch later"
             alt="watch_later"
             className="cardHeaderIcon watchLaterIcon"
             onClick={() => {
-              dispatch({ type: "REMOVE_FROM_WATCH_LATER", payload: _id });
+              toggleWatchLaterVideos(_id, dispatch);
               toast("error", "Video Removed from Watch Later");
             }}
           ></img>
@@ -77,7 +83,7 @@ export const VideoCard = ({ _id }) => {
             alt="watch_later"
             className="cardHeaderIcon watchLaterIcon"
             onClick={() => {
-              dispatch({ type: "ADD_TO_WATCH_LATER", payload: _id });
+              toggleWatchLaterVideos(_id, dispatch);
               toast("success", "Video Added to Watch Later");
             }}
           ></img>

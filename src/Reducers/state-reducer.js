@@ -63,18 +63,18 @@ export const reducer = (state, action) => {
         history: state.history.concat(action.payload),
       };
 
-    case ACTIONS.WATCH_LATER:
+    case ACTIONS.SET_WATCHLATER:
       return {
         ...state,
-        watchLater: [...state.watchLater, action.payload],
+        watchLater: action.payload,
       };
 
-    case ACTIONS.REMOVE_FROM_WATCH_LATER:
+    case ACTIONS.TOGGLE_WATCHLATER:
       return {
         ...state,
-        watchLater: state.watchLater.filter(
-          (video) => video !== action.payload
-        ),
+        watchLater: videoExists(state.watchLater, action.payload)
+          ? state.watchLater.filter((video) => video !== action.payload)
+          : state.watchLater.concat(action.payload),
       };
 
     case ACTIONS.CREATE_NEW_PLAYLIST:

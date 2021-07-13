@@ -17,7 +17,31 @@ export const Header = () => {
 
   const {
     userAuthState: { isLoggedIn },
+    userAuthDispatch,
   } = useAuth();
+
+  const handleLogout = () => {
+    localStorage?.removeItem("login");
+    userAuthDispatch({
+      type: "SET_LOGOUT",
+    });
+    dispatch({
+      type: "SET_WATCHLATER",
+      payload: [],
+    });
+    dispatch({
+      type: "SET_HISTORY",
+      payload: [],
+    });
+    dispatch({
+      type: "SET_PLAYLISTS",
+      payload: [],
+    });
+    dispatch({
+      type: "SET_FAVOURITES",
+      payload: [],
+    });
+  };
 
   return (
     <nav className="navBar flex pT1 pB1 j-space-between a-items-center pR1 pL1">
@@ -64,7 +88,9 @@ export const Header = () => {
         </a>
 
         {isLoggedIn ? (
-          <button className="button button-red">Logout</button>
+          <button className="button button-red" onClick={handleLogout}>
+            Logout
+          </button>
         ) : (
           <Link to="login">
             <button className="button button-primary">

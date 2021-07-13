@@ -13,7 +13,7 @@ export const fetchFavouriteVideosList = async (dispatch) => {
   }
 };
 
-export const addVideoToFavourites = async (_id, dispatch) => {
+export const toggleFavouriteVideos = async (_id, dispatch) => {
   try {
     const { data } = await axios.post(favourites, {
       _id: _id,

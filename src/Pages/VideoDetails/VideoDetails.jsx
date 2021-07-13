@@ -10,7 +10,8 @@ import WatchLater from "../../Assets/images/watch_later.svg";
 import Checked from "../../Assets/images/check.svg";
 import { useToastHook } from "../../CustomHook/useToastHook";
 import { AddToPlaylist } from "../../Components/Playlist/AddToPlaylist";
-import { addVideoToFavourites } from "../../ServerRequests";
+import { toggleFavouriteVideos } from "../../ServerRequests";
+import { toggleWatchLaterVideos } from "../../ServerRequests";
 
 export const VideoDetails = () => {
   const toast = useToastHook(3000);
@@ -21,8 +22,6 @@ export const VideoDetails = () => {
     state: { favourites, watchLater },
     dispatch,
   } = useVideoContext();
-
-  console.log(favourites);
 
   const {
     _id,
@@ -64,7 +63,7 @@ export const VideoDetails = () => {
                         alt="likeVideo"
                         className="VideoDetailsIcons"
                         onClick={() => {
-                          addVideoToFavourites(_id, dispatch);
+                          toggleFavouriteVideos(_id, dispatch);
                           toast("error", "Video removed from favourites ");
                         }}
                       />
@@ -74,7 +73,7 @@ export const VideoDetails = () => {
                       <img
                         src={Like}
                         onClick={() => {
-                          addVideoToFavourites(_id, dispatch);
+                          toggleFavouriteVideos(_id, dispatch);
                           toast("error", "Video added to favourites ");
                         }}
                         alt="likeVideo"
@@ -94,10 +93,7 @@ export const VideoDetails = () => {
                         title="Added to watch later"
                         className="VideoDetailsIcons"
                         onClick={() => {
-                          dispatch({
-                            type: "REMOVE_FROM_WATCH_LATER",
-                            payload: _id,
-                          });
+                          toggleWatchLaterVideos(_id, dispatch);
                           toast("error", "Video Removed from Watch Later");
                         }}
                       />
@@ -110,11 +106,8 @@ export const VideoDetails = () => {
                         title="Add to watch later"
                         className="VideoDetailsIcons"
                         onClick={() => {
-                          dispatch({
-                            type: "ADD_TO_WATCH_LATER",
-                            payload: _id,
-                          });
-                          toast("error", "Video added to watch later");
+                          toggleWatchLaterVideos(_id, dispatch);
+                          toast("error", "Video Added to Watch Later");
                         }}
                       />
                     </button>

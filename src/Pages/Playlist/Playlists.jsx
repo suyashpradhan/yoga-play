@@ -36,12 +36,13 @@ export const Playlists = () => {
                   </button>
                 </div>
                 <div className="playlistRow">
-                  {videos.map((videoId) => {
+                  {videos.map((videoId, _id) => {
                     return (
                       <PlaylistCard
                         playlistId={playlistId}
                         key={videoId}
                         videoId={videoId}
+                        _id={_id}
                       />
                     );
                   })}

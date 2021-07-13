@@ -10,6 +10,7 @@ import {
   fetchAllVideos,
   fetchFavouriteVideosList,
   fetchUserWatchHistory,
+  fetchUserWatchLater,
 } from "./ServerRequests";
 
 export const App = () => {
@@ -17,13 +18,10 @@ export const App = () => {
     userAuthState: { isLoggedIn, userAuthToken },
   } = useAuth();
 
-  const { userAuthState } = useAuth();
   const {
     state: { loader },
     dispatch,
   } = useVideoContext();
-
-  console.log(userAuthState);
 
   useEffect(() => {
     fetchAllVideos(dispatch, loader);
@@ -41,7 +39,7 @@ export const App = () => {
     if (isLoggedIn) {
       fetchFavouriteVideosList(dispatch, loader);
       fetchUserWatchHistory(dispatch, loader);
-      fetchUserWatchHistory(dispatch, loader);
+      fetchUserWatchLater(dispatch, loader);
     }
   }, [isLoggedIn]);
 

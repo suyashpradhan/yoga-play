@@ -1,26 +1,26 @@
 import axios from "axios";
 import { watchLaterURL } from "../API/urls";
 
-export const fetchWatchLaterVideos = async (dispatch) => {
+export const fetchUserWatchLater = async (dispatch) => {
   try {
     const {
       data: { watchLaterVideos },
     } = await axios.get(`${watchLaterURL}`);
     const videoList = watchLaterVideos.map((item) => item._id);
-    dispatch({ type: "SET_WATCHLATER_VIDEOS", payload: videoList });
+    dispatch({ type: "SET_WATCHLATER", payload: videoList });
   } catch (error) {
     console.error(error);
   }
 };
 
-export const addVideoToWatchLater = async (_id, dispatch) => {
+export const toggleWatchLaterVideos = async (_id, dispatch) => {
   try {
     const { data } = await axios.post(watchLaterURL, {
       _id: _id,
     });
     if (data.success) {
       dispatch({
-        type: "ADD_VIDEO_TO_WATCHLATER",
+        type: "TOGGLE_WATCHLATER",
         payload: _id,
       });
     }

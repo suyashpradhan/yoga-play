@@ -4,7 +4,7 @@ export { registerUser, loginUser } from "./server-requests";
 
 export {
   fetchFavouriteVideosList,
-  addVideoToFavourites,
+  toggleFavouriteVideos,
 } from "./favourites-server-requests";
 
 export {
@@ -13,3 +13,8 @@ export {
   removeVideoFromHistory,
   clearWatchHistory,
 } from "./history-server-requests";
+
+export {
+  fetchUserWatchLater,
+  toggleWatchLaterVideos,
+} from "./watchLater-server-request";

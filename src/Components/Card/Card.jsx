@@ -3,8 +3,12 @@ import { getVideoDetails } from "../../Utils";
 import Delete from "../../Assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
 import "./LikeVideos.css";
+import { toggleFavouriteVideos } from "../../ServerRequests";
+import { useToastHook } from "../../CustomHook/useToastHook";
 
 export const Card = ({ _id }) => {
+  const toast = useToastHook(3000);
+
   const {
     state: { videos },
     dispatch,
@@ -34,7 +38,15 @@ export const Card = ({ _id }) => {
         </Link>
       </div>
       <div className="rightWrapper">
-        <img src={Delete} className="actionIcons" alt="delete"></img>
+        <img
+          src={Delete}
+          className="actionIcons"
+          alt="delete"
+          onClick={() => {
+            toggleFavouriteVideos(_id, dispatch);
+            toast("error", "Video Removed from Favourites");
+          }}
+        ></img>
       </div>
     </div>
   );

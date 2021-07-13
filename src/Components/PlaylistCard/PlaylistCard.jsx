@@ -1,27 +1,28 @@
 import { useVideoContext } from "../../Context";
-import { getVideoDetails } from "../../Utils/utils";
 import "./PlaylistCard.css";
 
-export const PlaylistCard = ({ playlistId, videoId }) => {
+export const PlaylistCard = ({ playlistId, _id, videoId }) => {
   const {
     state: { videos },
     dispatch,
   } = useVideoContext();
 
-  const { id, thumbnailUrl, duration, title, channelName } = getVideoDetails(
-    videos,
-    videoId
-  );
+  const getVideo = videos.find((video) => video.videoId === videoId);
+  console.log(getVideo);
 
   return (
     <div className="playlistCard">
       <div className="cardImage">
-        <img src={thumbnailUrl} alt="title" className="cardImage"></img>
+        <img
+          src={getVideo.thumbnailUrl}
+          alt="title"
+          className="cardImage"
+        ></img>
       </div>
-      <h4 className="videoDuration">{duration}</h4>
+      <h4 className="videoDuration">{getVideo.duration}</h4>
       <div className="cardBody">
-        <h1 className="videoTitle">{title}</h1>
-        <h4 class="channelName">{channelName}</h4>
+        <h1 className="videoTitle">{getVideo.title}</h1>
+        <h4 class="channelName">{getVideo.channelName}</h4>
         <div className="flex j-content-center a-items-center">
           <button
             className="button button-danger mT1"
