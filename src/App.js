@@ -6,13 +6,28 @@ import { useEffect } from "react";
 import { useAuth } from "./Context/auth-context";
 import axios from "axios";
 import { useVideoContext } from "./Context";
-import { fetchFavouriteVideosList } from "./ServerRequests";
+import {
+  fetchAllVideos,
+  fetchFavouriteVideosList,
+  fetchUserWatchHistory,
+} from "./ServerRequests";
 
 export const App = () => {
   const {
     userAuthState: { isLoggedIn, userAuthToken },
   } = useAuth();
-  const { dispatch } = useVideoContext();
+
+  const { userAuthState } = useAuth();
+  const {
+    state: { loader },
+    dispatch,
+  } = useVideoContext();
+
+  console.log(userAuthState);
+
+  useEffect(() => {
+    fetchAllVideos(dispatch, loader);
+  }, []);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -24,7 +39,9 @@ export const App = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      fetchFavouriteVideosList(dispatch);
+      fetchFavouriteVideosList(dispatch, loader);
+      fetchUserWatchHistory(dispatch, loader);
+      fetchUserWatchHistory(dispatch, loader);
     }
   }, [isLoggedIn]);
 

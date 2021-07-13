@@ -1,40 +1,17 @@
 import React from "react";
 import "./VideosList.css";
 import { useVideoContext } from "../../Context";
-import { useEffect } from "react";
-import axios from "axios";
 import { VideoCard } from "../VideoCard/VideoCard";
 import { getFilteredVideo } from "../../Utils/utils";
 import NoVideo from "../../Assets/images/no_videos.svg";
 import Loader from "react-loader-spinner";
-import { fetchAllVideos } from "../../API";
 
 export const VideosList = () => {
   const {
     state: { videos, searchedText, toggleSidebar, loader },
-    dispatch,
   } = useVideoContext();
 
   const filteredVideos = getFilteredVideo(videos, searchedText);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        dispatch({ type: "SET_LOADER", payload: loader });
-        const response = await axios.get(fetchAllVideos);
-        if (response.status === 200) {
-          dispatch({
-            type: "ALL_VIDEOS",
-            payload: response.data.allVideos,
-          });
-        }
-        dispatch({ type: "SET_LOADER", payload: loader });
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return loader ? (
     <div className="loaderRow">

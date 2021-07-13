@@ -51,6 +51,18 @@ export const reducer = (state, action) => {
           : state.favourites.concat(action.payload),
       };
 
+    case ACTIONS.SET_HISTORY:
+      return {
+        ...state,
+        history: action.payload,
+      };
+
+    case ACTIONS.ADD_VIDEO_IN_HISTORY:
+      return {
+        ...state,
+        history: state.history.concat(action.payload),
+      };
+
     case ACTIONS.WATCH_LATER:
       return {
         ...state,

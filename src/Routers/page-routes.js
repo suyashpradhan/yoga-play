@@ -6,7 +6,7 @@ import { VideoDetails } from "../Pages/VideoDetails";
 import { WatchLater } from "../Pages/WatchLater";
 import { Playlists } from "../Pages/Playlist";
 import { Login } from "../Pages/Login/";
-import { LikedVideos } from "../Pages/LikedVideos";
+import { Favourites } from "../Pages/favourites";
 import { PrivateRoutes } from "./private-routes";
 import { Register } from "../Pages/register";
 import { WatchHistory } from "../Pages/watch-history";
@@ -21,7 +21,7 @@ export const PageRoutes = () => {
         <PrivateRoutes
           exact
           path="/liked-videos"
-          element={<LikedVideos />}
+          element={<Favourites />}
         ></PrivateRoutes>
         <PrivateRoutes
           exact

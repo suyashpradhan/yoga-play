@@ -4,7 +4,7 @@ import Delete from "../../Assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
 import "./LikeVideos.css";
 
-export const LikedVideoCard = ({ _id }) => {
+export const Card = ({ _id }) => {
   const {
     state: { videos },
     dispatch,

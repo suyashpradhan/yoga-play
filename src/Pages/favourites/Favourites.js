@@ -1,9 +1,9 @@
 import React from "react";
 import { useVideoContext } from "../../Context";
-import { LikedVideoCard } from "../../Components/LikeVideos";
-import { Sidebar } from "../../Components/Sidebar/";
+import { Card } from "../../Components/Card";
+import { Sidebar } from "../../Components/Sidebar";
 
-export const LikedVideos = () => {
+export const Favourites = () => {
   const {
     state: { favourites },
   } = useVideoContext();
@@ -16,7 +16,7 @@ export const LikedVideos = () => {
           <h1 className="pageHeader">Liked Videos</h1>
           {favourites.length === 0 && <p>no videos</p>}
           {favourites.map((_id) => (
-            <LikedVideoCard key={_id} _id={_id} />
+            <Card key={_id} _id={_id} />
           ))}
         </div>
       </main>

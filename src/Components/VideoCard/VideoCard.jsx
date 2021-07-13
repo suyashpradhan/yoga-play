@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { videoExists } from "../../Utils/utils";
 import { useToastHook } from "../../CustomHook/useToastHook";
 import { AddToPlaylist } from "../Playlist/AddToPlaylist";
+import { addVideoInHistory } from "../../ServerRequests";
 
 export const VideoCard = ({ _id }) => {
   const toast = useToastHook(3000);
@@ -33,7 +34,11 @@ export const VideoCard = ({ _id }) => {
   return (
     <>
       <div className="card">
-        <Link to={`/video/${_id}`} state={{ videoDetailsFromState }}>
+        <Link
+          to={`/video/${_id}`}
+          state={{ videoDetailsFromState }}
+          onClick={() => addVideoInHistory(_id, dispatch)}
+        >
           <div className="cardInner">
             <div className="cardHeader">
               <img className="cardImage" src={thumbnailUrl} alt="cardImage" />

@@ -15,7 +15,7 @@ export const WatchLater = () => {
         <h1 className="pageHeader">Watch Later</h1>
         {watchLater.length === 0
           ? ""
-          : watchLater.map((id) => <WatchLaterCard key={id} id={id} />)}
+          : watchLater.map((_id) => <WatchLaterCard key={_id} id={_id} />)}
       </div>
     </main>
   );
