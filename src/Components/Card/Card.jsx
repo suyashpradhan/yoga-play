@@ -1,14 +1,11 @@
-import { useVideoContext } from "../../Context";
-import { getVideoDetails } from "../../Utils";
-import Delete from "../../Assets/images/delete-white.svg";
+import { useVideoContext } from "../../context";
+import { getVideoDetails } from "../../utils";
+import Delete from "../../assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
 import "./LikeVideos.css";
-import { toggleFavouriteVideos } from "../../ServerRequests";
-import { useToastHook } from "../../CustomHook/useToastHook";
+import { toggleFavouriteVideos } from "../../services";
 
 export const Card = ({ _id }) => {
-  const toast = useToastHook(3000);
-
   const {
     state: { videos },
     dispatch,
@@ -44,7 +41,6 @@ export const Card = ({ _id }) => {
           alt="delete"
           onClick={() => {
             toggleFavouriteVideos(_id, dispatch);
-            toast("error", "Video Removed from Favourites");
           }}
         ></img>
       </div>

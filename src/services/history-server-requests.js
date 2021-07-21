@@ -1,5 +1,5 @@
 import axios from "axios";
-import { history } from "../API";
+import { history } from "../api";
 
 export const fetchUserWatchHistory = async (dispatch) => {
   try {

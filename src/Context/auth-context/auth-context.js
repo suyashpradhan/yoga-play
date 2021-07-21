@@ -1,9 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
-import { userAuthReducer } from "./authReducer";
+import { userAuthReducer } from "./auth-reducer";
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
   const userLoginDetails = JSON.parse(localStorage?.getItem("login")) || {
     isLoggedIn: false,
     userAuthToken: null,

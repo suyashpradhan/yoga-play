@@ -1,5 +1,5 @@
 import axios from "axios";
-import { videos } from "../API";
+import { videos } from "../api";
 
 export const fetchAllVideos = async (dispatch, loader) => {
   try {

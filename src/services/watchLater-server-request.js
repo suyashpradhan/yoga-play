@@ -1,5 +1,5 @@
 import axios from "axios";
-import { watchLaterURL } from "../API/urls";
+import { watchLaterURL } from "../api";
 
 export const fetchUserWatchLater = async (dispatch) => {
   try {

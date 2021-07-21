@@ -1,7 +1,7 @@
 import React from "react";
-import { useVideoContext } from "../../Context";
-import { WatchLaterCard } from "../../Components/WatchLater";
-import { Sidebar } from "../../Components/Sidebar";
+import { useVideoContext } from "../../context";
+import { WatchLaterCard } from "../../components/WatchLater";
+import { Sidebar } from "../../components/Sidebar";
 
 export const WatchLater = () => {
   const {

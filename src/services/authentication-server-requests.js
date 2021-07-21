@@ -1,5 +1,5 @@
 import axios from "axios";
-import { login, register } from "../API";
+import { login, register } from "../api";
 
 export const registerUser = async ({ fullName, email, password, userName }) => {
   let response = {};

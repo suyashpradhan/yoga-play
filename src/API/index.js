@@ -6,4 +6,5 @@ export {
   login,
   history,
   watchLaterURL,
+  favourites,
 } from "./urls";

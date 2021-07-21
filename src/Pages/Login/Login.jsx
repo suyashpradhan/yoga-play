@@ -1,13 +1,13 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useAuth } from "../../Context/auth-context";
+import { useAuth, useToast } from "../../context";
 import { useState } from "react";
-import { useToastHook } from "../../CustomHook/useToastHook";
-import { loginUser } from "../../ServerRequests";
+import { loginUser } from "../../services";
 
 export const Login = () => {
-  const toast = useToastHook(3000);
   const { userAuthDispatch } = useAuth();
+  const { toastDispatch } = useToast();
+
   const [formInputs, setFormInputs] = useState({
     userName: "",
     password: "",
@@ -33,7 +33,6 @@ export const Login = () => {
     });
 
     if (response.status === 200) {
-      toast("error", "Succesfully Logged in");
       localStorage?.setItem(
         "login",
         JSON.stringify({ isLoggedIn: true, userAuthToken: response.data.token })
@@ -42,8 +41,12 @@ export const Login = () => {
         type: "SET_LOGIN",
         payload: { token: response.data.token },
       });
-      navigate(state?.from ? state.from : "/");
+      toastDispatch({ type: "TOGGLE_TOAST", payload: "Logged In Succesful" });
+      setTimeout(() => {
+        navigate(state?.from ? state.from : "/");
+      }, 1000);
     } else {
+      toastDispatch({ type: "TOGGLE_TOAST", payload: "Invalid Credentials" });
       setErrors(response.data);
     }
   };

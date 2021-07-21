@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useVideoContext } from "../../Context";
+import { useVideoContext } from "../../context";
 import "./Modal.css";
-import CloseButton from "../../Assets/images/close.svg";
-import { updatePlaylist, videoExists } from "../../Utils/utils";
+import CloseButton from "../../assets/images/close.svg";
+import { updatePlaylist, videoExists } from "../../utils/utils";
 
 export const Modal = ({ videoId, setShowModal }) => {
   const [input, setInput] = useState("");

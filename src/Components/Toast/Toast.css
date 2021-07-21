@@ -3,8 +3,8 @@
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    left: 50%;
-    bottom: 3rem;
+    left: 2rem;
+    bottom: 2rem;
     background-color: var(--secondary);
     border: 1px solid var(--dark);
     border-radius: .2rem;

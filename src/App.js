@@ -1,22 +1,25 @@
-import "./Assets/styles/base.css";
-import { PageRoutes } from "./Routers";
-import { Header } from "./Components/Header";
-import { ToastContainer } from "./Components/Toast";
-import { useEffect } from "react";
-import { useAuth } from "./Context/auth-context";
+import "./assets/styles/base.css";
 import axios from "axios";
-import { useVideoContext } from "./Context";
+import { useEffect } from "react";
+import { PageRoutes } from "./routers";
+import { Header } from "./components/Header";
+import { useToast, useAuth, useVideoContext } from "./context";
 import {
   fetchAllVideos,
   fetchFavouriteVideosList,
   fetchUserWatchHistory,
   fetchUserWatchLater,
-} from "./ServerRequests";
+} from "./services";
+import { Toast } from "./components/Toast";
 
 export const App = () => {
   const {
     userAuthState: { isLoggedIn, userAuthToken },
   } = useAuth();
+
+  const {
+    state: { toastMessage },
+  } = useToast();
 
   const {
     state: { loader },
@@ -47,7 +50,7 @@ export const App = () => {
     <div className="body">
       <Header />
       <PageRoutes />
-      <ToastContainer />
+      <div className="toastWrapper">{toastMessage && <Toast />}</div>
     </div>
   );
 };

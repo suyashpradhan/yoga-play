@@ -1,6 +1,6 @@
 export { fetchAllVideos } from "./video-server-requests";
 
-export { registerUser, loginUser } from "./server-requests";
+export { registerUser, loginUser } from "./authentication-server-requests";
 
 export {
   fetchFavouriteVideosList,

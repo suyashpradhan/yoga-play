@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
-import { videoExists } from "../Utils";
-import { ACTIONS } from "./ACTIONS";
+import { videoExists } from "../../utils";
+import { ACTIONS } from "./state.actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {

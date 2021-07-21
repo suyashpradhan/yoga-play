@@ -1,7 +1,7 @@
 import "./Playlists.css";
-import { PlaylistCard } from "../../Components/PlaylistCard/PlaylistCard";
-import { useVideoContext } from "../../Context";
-import { Sidebar } from "../../Components/Sidebar";
+import { PlaylistCard } from "../../components/PlaylistCard/PlaylistCard";
+import { useVideoContext } from "../../context";
+import { Sidebar } from "../../components/Sidebar";
 
 export const Playlists = () => {
   const {

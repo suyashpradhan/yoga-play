@@ -1,4 +1,4 @@
-import { useVideoContext } from "../../Context";
+import { useVideoContext } from "../../context";
 import "./PlaylistCard.css";
 
 export const PlaylistCard = ({ playlistId, _id, videoId }) => {

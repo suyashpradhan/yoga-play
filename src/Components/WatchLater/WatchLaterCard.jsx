@@ -1,14 +1,11 @@
 import React from "react";
-import { useVideoContext } from "../../Context";
-import { getVideoDetails } from "../../Utils";
-import Delete from "../../Assets/images/delete-white.svg";
+import { useVideoContext } from "../../context";
+import { getVideoDetails } from "../../utils";
+import Delete from "../../assets/images/delete-white.svg";
 import { Link } from "react-router-dom";
-import { toggleWatchLaterVideos } from "../../ServerRequests";
-import { useToastHook } from "../../CustomHook/useToastHook";
+import { toggleWatchLaterVideos } from "../../services";
 
 export const WatchLaterCard = ({ id }) => {
-  const toast = useToastHook(3000);
-
   const {
     state: { videos },
     dispatch,
@@ -44,7 +41,6 @@ export const WatchLaterCard = ({ id }) => {
           alt="delete"
           onClick={() => {
             toggleWatchLaterVideos(id, dispatch);
-            toast("error", "Video Removed from Watch Later");
           }}
         ></img>
       </div>

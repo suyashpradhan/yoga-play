@@ -1,5 +1,5 @@
 import axios from "axios";
-import { favourites } from "../API/urls";
+import { favourites } from "../api";
 
 export const fetchFavouriteVideosList = async (dispatch) => {
   try {

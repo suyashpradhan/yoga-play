@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../ServerRequests/server-requests";
-import { useToastHook } from "../../CustomHook/useToastHook";
-
+import { registerUser } from "../../services/authentication-server-requests";
 import "../Login/Login.css";
 
 export const Register = () => {
-  const toast = useToastHook(3000);
-
   const [formInputs, setFormInputs] = useState({
     fullName: "",
     userName: "",
@@ -40,7 +36,6 @@ export const Register = () => {
     console.log(response);
 
     if (response.status === 200) {
-      toast("error", "Succesfully Signed up");
       setTimeout(() => {
         navigate("/login");
       }, 3000);

@@ -1,9 +1,9 @@
 import React from "react";
 import "./VideosList.css";
-import { useVideoContext } from "../../Context";
+import { useVideoContext } from "../../context";
 import { VideoCard } from "../VideoCard/VideoCard";
-import { getFilteredVideo } from "../../Utils/utils";
-import NoVideo from "../../Assets/images/no_videos.svg";
+import { getFilteredVideo } from "../../utils";
+import NoVideo from "../../assets/images/no_videos.svg";
 import Loader from "react-loader-spinner";
 
 export const VideosList = () => {

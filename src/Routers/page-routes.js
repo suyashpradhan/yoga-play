@@ -1,15 +1,15 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Header } from "../Components/Header";
-import { Home } from "../Components/Home";
-import { VideoDetails } from "../Pages/VideoDetails";
-import { WatchLater } from "../Pages/WatchLater";
-import { Playlists } from "../Pages/Playlist";
-import { Login } from "../Pages/Login/";
-import { Favourites } from "../Pages/favourites";
+import { Header } from "../components/Header";
+import { Home } from "../components/Home";
+import { VideoDetails } from "../pages/VideoDetails";
+import { WatchLater } from "../pages/WatchLater";
+import { Playlists } from "../pages/Playlist";
+import { Login } from "../pages/Login/";
+import { Favourites } from "../pages/favourites";
 import { PrivateRoutes } from "./private-routes";
-import { Register } from "../Pages/register";
-import { WatchHistory } from "../Pages/watch-history";
+import { Register } from "../pages/register";
+import { WatchHistory } from "../pages/watch-history";
 
 export const PageRoutes = () => {
   return (

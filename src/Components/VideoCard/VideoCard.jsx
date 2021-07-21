@@ -1,23 +1,21 @@
 import "./VideoCard.css";
-import View from "../../Assets/images/view.svg";
-import WatchLater from "../../Assets/images/watch_later.svg";
-import Checked from "../../Assets/images/check.svg";
-import { useVideoContext } from "../../Context";
+import View from "../../assets/images/view.svg";
+import WatchLater from "../../assets/images/watch_later.svg";
+import Checked from "../../assets/images/check.svg";
+import { useAuth, useVideoContext, useToast } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
-import { videoExists } from "../../Utils/utils";
-import { useToastHook } from "../../CustomHook/useToastHook";
+import { videoExists } from "../../utils";
 import { AddToPlaylist } from "../Playlist/AddToPlaylist";
-import { addVideoInHistory } from "../../ServerRequests";
-import { toggleWatchLaterVideos } from "../../ServerRequests";
-import { useAuth } from "../../Context/auth-context";
+import { addVideoInHistory } from "../../services";
+import { toggleWatchLaterVideos } from "../../services";
 
 export const VideoCard = ({ _id }) => {
-  const toast = useToastHook(3000);
   const navigate = useNavigate();
   const {
     state: { videos, watchLater },
     dispatch,
   } = useVideoContext();
+  const { toastDispatch } = useToast();
 
   const videoDetailsFromState = videos.find((video) => video._id === _id);
 
@@ -72,8 +70,12 @@ export const VideoCard = ({ _id }) => {
             alt="watch_later"
             className="cardHeaderIcon watchLaterIcon"
             onClick={() => {
-              toggleWatchLaterVideos(_id, dispatch);
-              toast("error", "Video Removed from Watch Later");
+              isLoggedIn
+                ? toggleWatchLaterVideos(_id, dispatch)
+                : toastDispatch({
+                    type: "TOGGLE_TOAST",
+                    payload: "You need to login to add video to Watch Later ",
+                  });
             }}
           ></img>
         ) : (
@@ -83,8 +85,12 @@ export const VideoCard = ({ _id }) => {
             alt="watch_later"
             className="cardHeaderIcon watchLaterIcon"
             onClick={() => {
-              toggleWatchLaterVideos(_id, dispatch);
-              toast("success", "Video Added to Watch Later");
+              isLoggedIn
+                ? toggleWatchLaterVideos(_id, dispatch)
+                : toastDispatch({
+                    type: "TOGGLE_TOAST",
+                    payload: "You need to login to add video to Watch Later ",
+                  });
             }}
           ></img>
         )}

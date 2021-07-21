@@ -5,7 +5,7 @@ import { RiPlayList2Line } from "react-icons/ri";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { AiOutlineHistory } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
-import { useVideoContext } from "../../Context";
+import { useVideoContext } from "../../context";
 
 export const Sidebar = () => {
   const {

@@ -1,7 +1,7 @@
 import React from "react";
-import { useVideoContext } from "../../Context";
-import { Card } from "../../Components/Card";
-import { Sidebar } from "../../Components/Sidebar";
+import { useVideoContext } from "../../context";
+import { Card } from "../../components/Card";
+import { Sidebar } from "../../components/Sidebar";
 
 export const Favourites = () => {
   const {
