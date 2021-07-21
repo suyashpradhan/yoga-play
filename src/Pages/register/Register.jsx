@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { registerUser } from "../../services/authentication-server-requests";
+import { useVideoContext } from "../../context";
+
 import "../Login/Login.css";
 
 export const Register = () => {
+  const { dispatch } = useVideoContext();
   const [formInputs, setFormInputs] = useState({
     fullName: "",
     userName: "",
@@ -12,8 +15,8 @@ export const Register = () => {
   });
 
   const [errors, setErrors] = useState("");
-
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const handleInputs = (e) => {
     setFormInputs((inputs) => {
@@ -33,14 +36,17 @@ export const Register = () => {
       password: formInputs.password,
       userName: formInputs.userName,
     });
-    console.log(response);
 
     if (response.status === 200) {
+      dispatch({
+        type: "TOGGLE_TOAST",
+        payload: "Succesfully Signed up, login with your credentials",
+      });
       setTimeout(() => {
-        navigate("/login");
-      }, 3000);
+        navigate(state?.from ? state.from : "/login");
+      }, 1000);
     } else {
-      setErrors(response.data);
+      setErrors(response.message);
     }
   };
 
@@ -100,6 +106,7 @@ export const Register = () => {
                 name="password"
               />
             </div>
+            <h3 className="error-text text-center">{errors}</h3>
             <button className="button button-primary loginButton">
               Continue
             </button>

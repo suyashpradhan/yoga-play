@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { PageRoutes } from "./routers";
 import { Header } from "./components/Header";
-import { useToast, useAuth, useVideoContext } from "./context";
+import { useAuth, useVideoContext } from "./context";
 import {
   fetchAllVideos,
   fetchFavouriteVideosList,
@@ -19,7 +19,7 @@ export const App = () => {
 
   const {
     state: { toastMessage },
-  } = useToast();
+  } = useVideoContext();
 
   const {
     state: { loader },
@@ -41,7 +41,6 @@ export const App = () => {
   useEffect(() => {
     if (isLoggedIn) {
       fetchFavouriteVideosList(dispatch, loader);
-      fetchUserWatchHistory(dispatch, loader);
       fetchUserWatchLater(dispatch, loader);
     }
   }, [isLoggedIn]);

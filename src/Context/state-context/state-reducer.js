@@ -16,6 +16,9 @@ export const reducer = (state, action) => {
         modal: !state.modal,
       };
 
+    case ACTIONS.TOGGLE_TOAST:
+      return { ...state, toastMessage: action.payload };
+
     case ACTIONS.TOGGLE_SIDEBAR:
       return {
         ...state,
@@ -46,12 +49,15 @@ export const reducer = (state, action) => {
     case ACTIONS.TOGGLE_FAVOURITES:
       return {
         ...state,
+        toastMessage: videoExists(state.favourites, action.payload)
+          ? "Removed video from Favourites"
+          : "Added video to Favourites",
         favourites: videoExists(state.favourites, action.payload)
           ? state.favourites.filter((video) => video !== action.payload)
           : state.favourites.concat(action.payload),
       };
 
-    case ACTIONS.SET_HISTORY:
+    /* case ACTIONS.SET_HISTORY:
       return {
         ...state,
         history: action.payload,
@@ -61,7 +67,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         history: state.history.concat(action.payload),
-      };
+      }; */
 
     case ACTIONS.SET_WATCHLATER:
       return {
@@ -72,6 +78,9 @@ export const reducer = (state, action) => {
     case ACTIONS.TOGGLE_WATCHLATER:
       return {
         ...state,
+        toastMessage: videoExists(state.watchLater, action.payload)
+          ? "Removed video from Watch Later"
+          : "Added video to Watch Later",
         watchLater: videoExists(state.watchLater, action.payload)
           ? state.watchLater.filter((video) => video !== action.payload)
           : state.watchLater.concat(action.payload),
@@ -97,6 +106,9 @@ export const reducer = (state, action) => {
 
       return {
         ...state,
+        toastMessage: isVideoPresent
+          ? `Video removed from ${getPlaylist.playlistName}`
+          : `Video added to ${getPlaylist.playlistName}`,
         playlists: state.playlists.map((singlePlaylist) =>
           singlePlaylist.playlistId === getPlaylist.playlistId
             ? {

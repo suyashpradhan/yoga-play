@@ -51,7 +51,11 @@ export const Header = () => {
           onClick={() => dispatch({ type: "TOGGLE_SIDEBAR" })}
         />
         <Link to="/">
-          <img src={Logo} alt="logo" className="logo"></img>
+          <img
+            src="https://yoga-trivia-assets.s3.ap-south-1.amazonaws.com/logo.svg"
+            alt="logo"
+            className="logo"
+          ></img>
         </Link>
       </div>
       <div className="middleNavBar">

@@ -2,11 +2,10 @@ import "./VideoCard.css";
 import View from "../../assets/images/view.svg";
 import WatchLater from "../../assets/images/watch_later.svg";
 import Checked from "../../assets/images/check.svg";
-import { useAuth, useVideoContext, useToast } from "../../context";
+import { useAuth, useVideoContext } from "../../context";
 import { Link, useNavigate } from "react-router-dom";
 import { videoExists } from "../../utils";
 import { AddToPlaylist } from "../Playlist/AddToPlaylist";
-import { addVideoInHistory } from "../../services";
 import { toggleWatchLaterVideos } from "../../services";
 
 export const VideoCard = ({ _id }) => {
@@ -15,7 +14,6 @@ export const VideoCard = ({ _id }) => {
     state: { videos, watchLater },
     dispatch,
   } = useVideoContext();
-  const { toastDispatch } = useToast();
 
   const videoDetailsFromState = videos.find((video) => video._id === _id);
 
@@ -38,11 +36,7 @@ export const VideoCard = ({ _id }) => {
   return (
     <>
       <div className="card">
-        <Link
-          to={`/video/${_id}`}
-          state={{ videoDetailsFromState }}
-          onClick={() => addVideoInHistory(_id, dispatch)}
-        >
+        <Link to={`/video/${_id}`} state={{ videoDetailsFromState }}>
           <div className="cardInner">
             <div className="cardHeader">
               <img className="cardImage" src={thumbnailUrl} alt="cardImage" />
@@ -72,7 +66,7 @@ export const VideoCard = ({ _id }) => {
             onClick={() => {
               isLoggedIn
                 ? toggleWatchLaterVideos(_id, dispatch)
-                : toastDispatch({
+                : dispatch({
                     type: "TOGGLE_TOAST",
                     payload: "You need to login to add video to Watch Later ",
                   });
@@ -87,7 +81,7 @@ export const VideoCard = ({ _id }) => {
             onClick={() => {
               isLoggedIn
                 ? toggleWatchLaterVideos(_id, dispatch)
-                : toastDispatch({
+                : dispatch({
                     type: "TOGGLE_TOAST",
                     payload: "You need to login to add video to Watch Later ",
                   });

@@ -13,6 +13,7 @@ export const VideoContextProvider = ({ children }) => {
     toggleSidebar: true,
     modal: false,
     loader: false,
+    toastMessage: "",
   });
 
   return (

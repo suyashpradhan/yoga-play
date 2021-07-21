@@ -13,7 +13,7 @@ export const Favourites = () => {
       <main className="main">
         <div className="pageLayout">
           <Sidebar />
-          <h1 className="pageHeader">Liked Videos</h1>
+          <h1 className="pageHeader">Favourites</h1>
           {favourites.length === 0 && <p>no videos</p>}
           {favourites.map((_id) => (
             <Card key={_id} _id={_id} />

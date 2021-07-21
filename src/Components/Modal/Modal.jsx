@@ -61,10 +61,16 @@ export const Modal = ({ videoId, setShowModal }) => {
               <button
                 className="button button-primary"
                 onClick={() => {
-                  dispatch({
-                    type: "CREATE_NEW_PLAYLIST",
-                    payload: input,
-                  });
+                  setTimeout(() => {
+                    dispatch({
+                      type: "CREATE_NEW_PLAYLIST",
+                      payload: input,
+                    });
+                    dispatch({
+                      type: "TOGGLE_TOAST",
+                      payload: `Playlist ${input} created`,
+                    });
+                  }, 2000);
                   setInput("");
                 }}
               >

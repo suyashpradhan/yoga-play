@@ -2,35 +2,31 @@ import axios from "axios";
 import { login, register } from "../api";
 
 export const registerUser = async ({ fullName, email, password, userName }) => {
-  let response = {};
   try {
-    response = await axios.post(`${register}`, {
+    const response = await axios.post(`${register}`, {
       fullName,
       email,
       password,
       userName,
     });
+    return response;
   } catch (error) {
-    response.data = {
-      error: error.response.data,
-    };
+    const errorResponse = JSON.stringify(error.response.data);
+    console.error(errorResponse);
+    return error.response.data;
   }
-
-  return response;
 };
 
 export const loginUser = async ({ userName, password }) => {
-  let response = {};
   try {
-    response = await axios.post(`${login}`, {
+    const response = await axios.post(`${login}`, {
       userName,
       password,
     });
+    return response;
   } catch (error) {
-    response.data = {
-      error: error.response.data,
-    };
+    const errorResponse = JSON.stringify(error.response.data);
+    console.error(errorResponse);
+    return error.response.data;
   }
-
-  return response;
 };

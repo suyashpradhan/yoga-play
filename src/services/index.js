@@ -7,12 +7,12 @@ export {
   toggleFavouriteVideos,
 } from "./favourites-server-requests";
 
-export {
+/* export {
   fetchUserWatchHistory,
   addVideoInHistory,
   removeVideoFromHistory,
   clearWatchHistory,
-} from "./history-server-requests";
+} from "./history-server-requests"; */
 
 export {
   fetchUserWatchLater,

@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import "./Toast.css";
 import Close from "../../assets/images/close.svg";
-import { useToast } from "../../context";
+import { useVideoContext } from "../../context";
 
 export const Toast = () => {
   const {
     state: { toastMessage },
-    toastDispatch,
-  } = useToast();
+    dispatch,
+  } = useVideoContext();
 
   const closeToast = () => {
-    toastDispatch({ type: "TOGGLE_TOAST", payload: null });
+    dispatch({ type: "TOGGLE_TOAST", payload: null });
   };
 
   useEffect(() => {

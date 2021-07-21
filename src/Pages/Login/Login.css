@@ -57,3 +57,10 @@
     color: var(--primary);
     font-weight: 600;
 }
+
+.error-text {
+    color: var(--red);
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 400;
+}

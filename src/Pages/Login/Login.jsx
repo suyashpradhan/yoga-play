@@ -1,12 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { useAuth, useToast } from "../../context";
+import { useAuth, useVideoContext } from "../../context";
 import { useState } from "react";
 import { loginUser } from "../../services";
 
 export const Login = () => {
   const { userAuthDispatch } = useAuth();
-  const { toastDispatch } = useToast();
+  const { dispatch } = useVideoContext();
 
   const [formInputs, setFormInputs] = useState({
     userName: "",
@@ -31,7 +31,6 @@ export const Login = () => {
       userName: formInputs.userName,
       password: formInputs.password,
     });
-
     if (response.status === 200) {
       localStorage?.setItem(
         "login",
@@ -41,15 +40,15 @@ export const Login = () => {
         type: "SET_LOGIN",
         payload: { token: response.data.token },
       });
-      toastDispatch({ type: "TOGGLE_TOAST", payload: "Logged In Succesful" });
+      dispatch({ type: "TOGGLE_TOAST", payload: "Succesfully logged in" });
       setTimeout(() => {
         navigate(state?.from ? state.from : "/");
       }, 1000);
     } else {
-      toastDispatch({ type: "TOGGLE_TOAST", payload: "Invalid Credentials" });
-      setErrors(response.data);
+      setErrors(response.message);
     }
   };
+
   return (
     <div className="loginWrapper">
       <div className="loginCard">
@@ -81,6 +80,7 @@ export const Login = () => {
                 className="formField"
               />
             </div>
+            <h3 className="error-text">{errors}</h3>
             <button
               onClick={handleSubmit}
               className="button button-primary loginButton"
