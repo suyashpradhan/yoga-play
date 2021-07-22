@@ -1,4 +1,5 @@
 import "./VideoDetails.css";
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import ReactPlayer from "react-player";
 import { Sidebar } from "../../components/Sidebar";
@@ -11,6 +12,7 @@ import Checked from "../../assets/images/check.svg";
 import { AddToPlaylist } from "../../components/Playlist/AddToPlaylist";
 import { toggleFavouriteVideos } from "../../services";
 import { toggleWatchLaterVideos } from "../../services";
+import { NotesContainer } from "../../components/Notes";
 
 export const VideoDetails = () => {
   const {
@@ -20,6 +22,10 @@ export const VideoDetails = () => {
     state: { favourites, watchLater },
     dispatch,
   } = useVideoContext();
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const {
     _id,
@@ -35,87 +41,85 @@ export const VideoDetails = () => {
       <main className="main">
         <div className="pageLayout">
           <Sidebar />
-          <div className="container">
-            <div className="row">
-              <div className="xl-8">
-                <div className="reactPlayer">
-                  <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=${videoId}`}
-                    controls={true}
-                    playing={true}
-                    width="100%"
-                    height="100%"
-                    className="reactPlayer"
-                  />
+          <div className="row mT2">
+            <div className="xl-8 lg-8 md-12 sm-12">
+              <div className="reactPlayer">
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${videoId}`}
+                  controls={true}
+                  playing={true}
+                  width="100%"
+                  height="100%"
+                  className="reactPlayer"
+                />
+              </div>
+              <div className="videoDetails">
+                <div className="videoStats">
+                  <h4 className="totalViews">{viewsCount} views</h4>
+                  <h5 className="publishedDate"> • {publishedDate}</h5>
                 </div>
-                <div className="videoDetails">
-                  <div className="videoStats">
-                    <h4 className="totalViews">{viewsCount} views</h4>
-                    <h5 className="publishedDate"> • {publishedDate}</h5>
-                  </div>
-                  <div className="videoDetailsHeader flex j-space-between a-items-center">
-                    <h1 className="videoDetailsTitle">{title}</h1>
-                    <div className="videoDetailsIconWrapper">
-                      {videoExists(favourites, _id) ? (
-                        <button className="buttonTransparent">
-                          <img
-                            src={LikeFilled}
-                            alt="likeVideo"
-                            className="VideoDetailsIcons"
-                            onClick={() => {
-                              toggleFavouriteVideos(_id, dispatch);
-                            }}
-                          />
-                        </button>
-                      ) : (
-                        <button className="buttonTransparent">
-                          <img
-                            src={Like}
-                            onClick={() => {
-                              toggleFavouriteVideos(_id, dispatch);
-                            }}
-                            alt="likeVideo"
-                            className="VideoDetailsIcons"
-                          />
-                        </button>
-                      )}
-
+                <div className="videoDetailsHeader flex j-space-between a-items-center">
+                  <h1 className="videoDetailsTitle">{title}</h1>
+                  <div className="videoDetailsIconWrapper">
+                    {videoExists(favourites, _id) ? (
                       <button className="buttonTransparent">
-                        <AddToPlaylist videoId={_id} />
+                        <img
+                          src={LikeFilled}
+                          alt="likeVideo"
+                          className="VideoDetailsIcons"
+                          onClick={() => {
+                            toggleFavouriteVideos(_id, dispatch);
+                          }}
+                        />
                       </button>
-                      {videoExists(watchLater, _id) ? (
-                        <button className="buttonTransparent">
-                          <img
-                            src={Checked}
-                            alt="watch-later"
-                            title="Added to watch later"
-                            className="VideoDetailsIcons"
-                            onClick={() => {
-                              toggleWatchLaterVideos(_id, dispatch);
-                            }}
-                          />
-                        </button>
-                      ) : (
-                        <button className="buttonTransparent">
-                          <img
-                            src={WatchLater}
-                            alt="watch-later"
-                            title="Add to watch later"
-                            className="VideoDetailsIcons"
-                            onClick={() => {
-                              toggleWatchLaterVideos(_id, dispatch);
-                            }}
-                          />
-                        </button>
-                      )}
-                    </div>
+                    ) : (
+                      <button className="buttonTransparent">
+                        <img
+                          src={Like}
+                          onClick={() => {
+                            toggleFavouriteVideos(_id, dispatch);
+                          }}
+                          alt="likeVideo"
+                          className="VideoDetailsIcons"
+                        />
+                      </button>
+                    )}
+
+                    <button className="buttonTransparent">
+                      <AddToPlaylist videoId={_id} />
+                    </button>
+                    {videoExists(watchLater, _id) ? (
+                      <button className="buttonTransparent">
+                        <img
+                          src={Checked}
+                          alt="watch-later"
+                          title="Added to watch later"
+                          className="VideoDetailsIcons"
+                          onClick={() => {
+                            toggleWatchLaterVideos(_id, dispatch);
+                          }}
+                        />
+                      </button>
+                    ) : (
+                      <button className="buttonTransparent">
+                        <img
+                          src={WatchLater}
+                          alt="watch-later"
+                          title="Add to watch later"
+                          className="VideoDetailsIcons"
+                          onClick={() => {
+                            toggleWatchLaterVideos(_id, dispatch);
+                          }}
+                        />
+                      </button>
+                    )}
                   </div>
-                  <p className="videoDescription">{description}</p>
                 </div>
+                <p className="videoDescription">{description}</p>
               </div>
-              <div className="xl-4">
-                <h3>hello world!</h3>
-              </div>
+            </div>
+            <div className="xl-4 lg-4 md-12 sm-12">
+              <NotesContainer _id={_id} />
             </div>
           </div>
         </div>
