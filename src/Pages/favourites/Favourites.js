@@ -5,13 +5,13 @@ import { Sidebar } from "../../components/Sidebar";
 
 export const Favourites = () => {
   const {
-    state: { favourites },
+    state: { favourites, toggleSidebar },
   } = useVideoContext();
 
   return (
     <>
-      <main className="main">
-        <div className="pageLayout">
+      <main className={toggleSidebar ? "main" : "main mainToggled"}>
+        <div className="mainContent">
           <Sidebar />
           <h1 className="pageHeader">Favourites</h1>
           {favourites.length === 0 && <p>no videos</p>}

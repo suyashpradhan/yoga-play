@@ -17,22 +17,17 @@ export const WatchLaterCard = ({ id }) => {
   );
 
   return (
-    <div className="horizontalCard">
+    <div className="horizontalCard" key={id}>
       <div className="leftWrapper">
         <img src={thumbnailUrl} className="cardBannerImage" alt={title}></img>
         <h2 className="videoTiming">{duration}</h2>
       </div>
 
       <div className="middleWrapper">
-        <Link
-          to={{
-            pathname: `/video/${id}`,
-          }}
-          key={id}
-        >
+        <div>
           <h1 className="videoTitle">{title}</h1>
           <h1 className="channelName">{channelName}</h1>
-        </Link>
+        </div>
       </div>
       <div className="rightWrapper">
         <img

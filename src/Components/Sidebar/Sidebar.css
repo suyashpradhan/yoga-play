@@ -43,3 +43,10 @@
     background-color: var(--dark);
     color: var(--white);
 }
+
+@media screen and (max-width: 600px) and (min-width: 100px) {
+    .sidebarToggled {
+        left: -100% !important;
+        display: none !important;
+    }
+}

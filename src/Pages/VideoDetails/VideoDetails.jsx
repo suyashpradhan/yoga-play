@@ -17,7 +17,7 @@ import { fetchVideoNotes } from "../../services";
 
 export const VideoDetails = () => {
   const {
-    state: { videoDetailsFromState },
+    state: { videoDetailsFromState, toggleSidebar },
   } = useLocation();
   const {
     state: { favourites, watchLater },
@@ -47,104 +47,106 @@ export const VideoDetails = () => {
 
   return (
     <>
-      <main className="main">
-        <div className="pageLayout">
-          <Sidebar />
-          <div className="row mT2">
-            <div className="xl-8 lg-8 md-12 sm-12">
-              <div className="reactPlayer">
-                <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${videoId}`}
-                  controls={true}
-                  playing={true}
-                  width="100%"
-                  height="100%"
-                  className="reactPlayer"
-                />
-              </div>
-              <div className="videoDetails">
-                <div className="videoStats">
-                  <h4 className="totalViews">{viewsCount} views</h4>
-                  <h5 className="publishedDate"> • {publishedDate}</h5>
+      <div className={toggleSidebar ? "main" : "main mainToggled"}>
+        <div className="mainContent">
+          <div className="pageLayout">
+            <Sidebar />
+            <div className="row mT2">
+              <div className="xl-8 lg-8 md-12 sm-12">
+                <div className="reactPlayer">
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${videoId}`}
+                    controls={true}
+                    playing={true}
+                    width="100%"
+                    height="100%"
+                    className="reactPlayer"
+                  />
                 </div>
-                <div className="videoDetailsHeader flex j-space-between a-items-center">
-                  <h1 className="videoDetailsTitle">{title}</h1>
-                  <div className="videoDetailsIconWrapper">
-                    {videoExists(favourites, _id) ? (
-                      <button className="buttonTransparent">
-                        <img
-                          src={LikeFilled}
-                          alt="likeVideo"
-                          className="VideoDetailsIcons"
-                          onClick={() => {
-                            toggleFavouriteVideos(_id, dispatch);
-                          }}
-                        />
-                      </button>
-                    ) : (
-                      <button className="buttonTransparent">
-                        <img
-                          src={Like}
-                          onClick={() => {
-                            isLoggedIn
-                              ? toggleFavouriteVideos(_id, dispatch)
-                              : dispatch({
-                                  type: "TOGGLE_TOAST",
-                                  payload:
-                                    "You need to login to add video to Favourites ",
-                                });
-                          }}
-                          alt="likeVideo"
-                          className="VideoDetailsIcons"
-                        />
-                      </button>
-                    )}
-
-                    <button className="buttonTransparent">
-                      <AddToPlaylistDetails />
-                    </button>
-                    {videoExists(watchLater, _id) ? (
-                      <button className="buttonTransparent">
-                        <img
-                          src={Checked}
-                          alt="watch-later"
-                          title="Added to watch later"
-                          className="VideoDetailsIcons"
-                          onClick={() => {
-                            toggleWatchLaterVideos(_id, dispatch);
-                          }}
-                        />
-                      </button>
-                    ) : (
-                      <button className="buttonTransparent">
-                        <img
-                          src={WatchLater}
-                          alt="watch-later"
-                          title="Add to watch later"
-                          className="VideoDetailsIcons"
-                          onClick={() => {
-                            isLoggedIn
-                              ? toggleWatchLaterVideos(_id, dispatch)
-                              : dispatch({
-                                  type: "TOGGLE_TOAST",
-                                  payload:
-                                    "You need to login to add video to Watch Later ",
-                                });
-                          }}
-                        />
-                      </button>
-                    )}
+                <div className="videoDetails">
+                  <div className="videoStats">
+                    <h4 className="totalViews">{viewsCount} views</h4>
+                    <h5 className="publishedDate"> • {publishedDate}</h5>
                   </div>
+                  <div className="videoDetailsHeader flex j-space-between a-items-center">
+                    <h1 className="videoDetailsTitle">{title}</h1>
+                    <div className="videoDetailsIconWrapper">
+                      {videoExists(favourites, _id) ? (
+                        <button className="buttonTransparent">
+                          <img
+                            src={LikeFilled}
+                            alt="likeVideo"
+                            className="VideoDetailsIcons"
+                            onClick={() => {
+                              toggleFavouriteVideos(_id, dispatch);
+                            }}
+                          />
+                        </button>
+                      ) : (
+                        <button className="buttonTransparent">
+                          <img
+                            src={Like}
+                            onClick={() => {
+                              isLoggedIn
+                                ? toggleFavouriteVideos(_id, dispatch)
+                                : dispatch({
+                                    type: "TOGGLE_TOAST",
+                                    payload:
+                                      "You need to login to add video to Favourites ",
+                                  });
+                            }}
+                            alt="likeVideo"
+                            className="VideoDetailsIcons"
+                          />
+                        </button>
+                      )}
+
+                      <button className="buttonTransparent">
+                        <AddToPlaylistDetails />
+                      </button>
+                      {videoExists(watchLater, _id) ? (
+                        <button className="buttonTransparent">
+                          <img
+                            src={Checked}
+                            alt="watch-later"
+                            title="Added to watch later"
+                            className="VideoDetailsIcons"
+                            onClick={() => {
+                              toggleWatchLaterVideos(_id, dispatch);
+                            }}
+                          />
+                        </button>
+                      ) : (
+                        <button className="buttonTransparent">
+                          <img
+                            src={WatchLater}
+                            alt="watch-later"
+                            title="Add to watch later"
+                            className="VideoDetailsIcons"
+                            onClick={() => {
+                              isLoggedIn
+                                ? toggleWatchLaterVideos(_id, dispatch)
+                                : dispatch({
+                                    type: "TOGGLE_TOAST",
+                                    payload:
+                                      "You need to login to add video to Watch Later ",
+                                  });
+                            }}
+                          />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <p className="videoDescription">{description}</p>
                 </div>
-                <p className="videoDescription">{description}</p>
               </div>
-            </div>
-            <div className="xl-4 lg-4 md-12 sm-12">
-              <NotesContainer _id={_id} />
+              <div className="xl-4 lg-4 md-12 sm-12">
+                <NotesContainer _id={_id} />
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 };

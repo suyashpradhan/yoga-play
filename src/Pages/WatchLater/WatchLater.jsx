@@ -5,12 +5,12 @@ import { Sidebar } from "../../components/Sidebar";
 
 export const WatchLater = () => {
   const {
-    state: { watchLater },
+    state: { watchLater, toggleSidebar },
   } = useVideoContext();
 
   return (
-    <main className="main">
-      <div className="pageLayout">
+    <main className={toggleSidebar ? "main" : "main mainToggled"}>
+      <div className="mainContent">
         <Sidebar />
         <h1 className="pageHeader">Watch Later</h1>
         {watchLater.length === 0
