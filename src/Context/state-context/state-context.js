@@ -9,6 +9,7 @@ export const VideoContextProvider = ({ children }) => {
     watchLater: [],
     playlists: [],
     history: [],
+    notes: [],
     searchedText: "",
     toggleSidebar: true,
     modal: false,

@@ -146,6 +146,32 @@ export const reducer = (state, action) => {
         ),
       };
 
+    case ACTIONS.SET_NOTES:
+      return { ...state, notes: action.payload };
+
+    case ACTIONS.ADD_NOTE:
+      return {
+        ...state,
+        notes: state.notes.concat({ ...action.payload }),
+        toastMessage: "Note added successfully",
+      };
+
+    case ACTIONS.UPDATE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.map((note) =>
+          note._id === action.payload._id ? action.payload : note
+        ),
+        toastMessage: "Note updated successfully",
+      };
+
+    case ACTIONS.DELETE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.filter((note) => note._id !== action.payload._id),
+        toastMessage: "Note deleted successfully",
+      };
+
     default:
       return state;
   }

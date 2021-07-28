@@ -2,15 +2,20 @@
     border: 1px solid var(--border-light);
     padding: 2rem 1rem;
     border-radius: .2rem;
-    max-height: 700px;
-    height: 500px;
-    overflow: auto;
+    height: 615px;
+    max-height: 800px;
+    width: 100%;
+    overflow: auto
 }
+
 
 .notes-header {
     font-size: 2.2rem;
     color: var(--white);
     margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 1rem;
+    display: block;
 }
 
 .notes-paragraph {
@@ -28,6 +33,55 @@
 }
 
 .formFieldTextArea {
-    height: 6rem;
+    height: 4rem;
     resize: none;
+}
+
+.notes-display-container {
+    margin: 3rem 0;
+}
+
+.notes-display-container-header {
+    font-size: 1.4rem;
+    color: var(--white);
+    margin: 1rem 0 0 0;
+}
+
+.notes-display-container-description {
+    margin: 1rem 0;
+    color: var(--text-secondary);
+}
+
+.note-container {
+    margin: 1.2rem 0;
+    background-color: var(--background-opaque);
+    padding: .6rem 1rem;
+    border-radius: .2rem;
+}
+
+.note-header-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: .6rem
+}
+
+.note-icons {
+    color: var(--text-secondary);
+    margin: .6rem 0 0 .4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.note-title {
+    flex: 1;
+    font-size: 1.4rem;
+    color: var(--white);
+    margin: 1rem 0 0 0;
+}
+
+.note-description {
+    color: var(--text-secondary);
+    text-align: justify;
+    margin: 1rem 0;
 }

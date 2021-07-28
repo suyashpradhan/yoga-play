@@ -12,7 +12,7 @@ export const registerUser = async ({ fullName, email, password, userName }) => {
     return response;
   } catch (error) {
     const errorResponse = JSON.stringify(error.response.data);
-    console.error(errorResponse);
+    console.log(errorResponse);
     return error.response.data;
   }
 };
@@ -26,7 +26,7 @@ export const loginUser = async ({ userName, password }) => {
     return response;
   } catch (error) {
     const errorResponse = JSON.stringify(error.response.data);
-    console.error(errorResponse);
+    console.log(errorResponse);
     return error.response.data;
   }
 };

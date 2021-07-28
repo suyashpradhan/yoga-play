@@ -3,16 +3,17 @@ import { useEffect } from "react";
 import { useLocation } from "react-router";
 import ReactPlayer from "react-player";
 import { Sidebar } from "../../components/Sidebar";
-import { useVideoContext } from "../../context";
+import { useAuth, useVideoContext } from "../../context";
 import { videoExists } from "../../utils";
 import Like from "../../assets/images/like.svg";
 import LikeFilled from "../../assets/images/like-filled.svg";
 import WatchLater from "../../assets/images/watch_later.svg";
 import Checked from "../../assets/images/check.svg";
-import { AddToPlaylist } from "../../components/Playlist/AddToPlaylist";
+import { AddToPlaylistDetails } from "../../components/Playlist/AddToPlaylistDetails";
 import { toggleFavouriteVideos } from "../../services";
 import { toggleWatchLaterVideos } from "../../services";
 import { NotesContainer } from "../../components/Notes";
+import { fetchVideoNotes } from "../../services";
 
 export const VideoDetails = () => {
   const {
@@ -28,6 +29,10 @@ export const VideoDetails = () => {
   }, []);
 
   const {
+    userAuthState: { isLoggedIn },
+  } = useAuth();
+
+  const {
     _id,
     videoId,
     title,
@@ -35,6 +40,10 @@ export const VideoDetails = () => {
     description,
     statistics: { viewsCount },
   } = videoDetailsFromState;
+
+  useEffect(() => {
+    fetchVideoNotes(_id, dispatch);
+  }, []);
 
   return (
     <>
@@ -77,7 +86,13 @@ export const VideoDetails = () => {
                         <img
                           src={Like}
                           onClick={() => {
-                            toggleFavouriteVideos(_id, dispatch);
+                            isLoggedIn
+                              ? toggleFavouriteVideos(_id, dispatch)
+                              : dispatch({
+                                  type: "TOGGLE_TOAST",
+                                  payload:
+                                    "You need to login to add video to Favourites ",
+                                });
                           }}
                           alt="likeVideo"
                           className="VideoDetailsIcons"
@@ -86,7 +101,7 @@ export const VideoDetails = () => {
                     )}
 
                     <button className="buttonTransparent">
-                      <AddToPlaylist videoId={_id} />
+                      <AddToPlaylistDetails />
                     </button>
                     {videoExists(watchLater, _id) ? (
                       <button className="buttonTransparent">
@@ -108,7 +123,13 @@ export const VideoDetails = () => {
                           title="Add to watch later"
                           className="VideoDetailsIcons"
                           onClick={() => {
-                            toggleWatchLaterVideos(_id, dispatch);
+                            isLoggedIn
+                              ? toggleWatchLaterVideos(_id, dispatch)
+                              : dispatch({
+                                  type: "TOGGLE_TOAST",
+                                  payload:
+                                    "You need to login to add video to Watch Later ",
+                                });
                           }}
                         />
                       </button>

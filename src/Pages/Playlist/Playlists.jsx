@@ -25,12 +25,18 @@ export const Playlists = () => {
                   <h3 class="playlistName">{playlistName}</h3>
                   <button
                     className="button button-danger"
-                    onClick={() =>
-                      dispatch({
-                        type: "DELETE_PLAYLIST",
-                        payload: playlistId,
-                      })
-                    }
+                    onClick={() => {
+                      setTimeout(() => {
+                        dispatch({
+                          type: "DELETE_PLAYLIST",
+                          payload: playlistId,
+                        });
+                        dispatch({
+                          type: "TOGGLE_TOAST",
+                          payload: `Playlist ${playlistName} Deleted `,
+                        });
+                      }, 1000);
+                    }}
                   >
                     Delete Playlist
                   </button>

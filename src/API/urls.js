@@ -7,3 +7,4 @@ export const login = `${baseURL}/login`;
 export const favourites = `${baseURL}/favourites`;
 export const history = `${baseURL}/history`;
 export const watchLaterURL = `${baseURL}/watch-later`;
+export const notesURL = `${baseURL}/add-note`;

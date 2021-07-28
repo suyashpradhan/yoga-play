@@ -9,7 +9,6 @@ import { AddToPlaylist } from "../Playlist/AddToPlaylist";
 import { toggleWatchLaterVideos } from "../../services";
 
 export const VideoCard = ({ _id }) => {
-  const navigate = useNavigate();
   const {
     state: { videos, watchLater },
     dispatch,

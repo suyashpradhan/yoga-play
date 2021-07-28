@@ -7,4 +7,5 @@ export {
   history,
   watchLaterURL,
   favourites,
+  notesURL,
 } from "./urls";

@@ -1,18 +1,19 @@
 import "./Notes.css";
 import { useAuth } from "./../../context";
-import { AddNotes } from "./AddNotes";
 import { Link } from "react-router-dom";
 import { BiChevronRight } from "react-icons/bi";
+import { NotesAction } from "./NotesAction";
 
 export const NotesContainer = ({ _id }) => {
   const {
     userAuthState: { isLoggedIn },
   } = useAuth();
+
   return (
     <>
       {isLoggedIn ? (
         <>
-          <AddNotes videoId={_id} />
+          <NotesAction videoId={_id} _id={_id} />
         </>
       ) : (
         <div className="notes-container">

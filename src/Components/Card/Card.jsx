@@ -11,10 +11,13 @@ export const Card = ({ _id }) => {
     dispatch,
   } = useVideoContext();
 
-  console.log(_id);
+  const videoDetailsFromState = videos.find((video) => video._id === _id);
 
-  const { title, thumbnailUrl, duration, channelName, videoId } =
-    getVideoDetails(videos, _id);
+  const { videoId, title, thumbnailUrl, duration, channelName } =
+    videoDetailsFromState;
+
+  /* const { title, thumbnailUrl, duration, channelName, videoId } =
+    getVideoDetails(videos, _id); */
 
   return (
     <div className="horizontalCard">
@@ -24,12 +27,7 @@ export const Card = ({ _id }) => {
       </div>
 
       <div className="middleWrapper">
-        <Link
-          to={{
-            pathname: `/video/${videoId}`,
-          }}
-          key={videoId}
-        >
+        <Link to={`/video/${_id}`} state={{ videoDetailsFromState }} key={_id}>
           <h1 className="videoTitle">{title}</h1>
           <h1 className="channelName">{channelName}</h1>
         </Link>

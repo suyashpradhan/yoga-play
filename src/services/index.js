@@ -18,3 +18,10 @@ export {
   fetchUserWatchLater,
   toggleWatchLaterVideos,
 } from "./watchLater-server-request";
+
+export {
+  fetchVideoNotes,
+  addVideoNote,
+  updateVideoNote,
+  deleteVideoNote,
+} from "./notes-server-request";

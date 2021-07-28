@@ -36,6 +36,32 @@ export const Login = () => {
         "login",
         JSON.stringify({ isLoggedIn: true, userAuthToken: response.data.token })
       );
+
+      userAuthDispatch({
+        type: "SET_LOGIN",
+        payload: { token: response.data.token },
+      });
+      dispatch({ type: "TOGGLE_TOAST", payload: "Succesfully logged in" });
+      setTimeout(() => {
+        navigate(state?.from ? state.from : "/");
+      }, 1000);
+    } else {
+      setErrors(response.message);
+    }
+  };
+
+  const testCredentialSubmit = async (e) => {
+    e.preventDefault();
+    const response = await loginUser({
+      userName: "tester",
+      password: "Example@123",
+    });
+    if (response.status === 200) {
+      localStorage?.setItem(
+        "login",
+        JSON.stringify({ isLoggedIn: true, userAuthToken: response.data.token })
+      );
+
       userAuthDispatch({
         type: "SET_LOGIN",
         payload: { token: response.data.token },
@@ -62,7 +88,7 @@ export const Login = () => {
               <input
                 type="text"
                 onChange={handleInputs}
-                value={formInputs.userName}
+                value={`${formInputs.userName}`}
                 name="userName"
                 className="formField"
               />
@@ -75,17 +101,25 @@ export const Login = () => {
               <input
                 type="password"
                 onChange={handleInputs}
-                value={formInputs.password}
+                value={`${formInputs.password}`}
                 name="password"
                 className="formField"
               />
             </div>
             <h3 className="error-text">{errors}</h3>
+
             <button
               onClick={handleSubmit}
               className="button button-primary loginButton"
             >
-              Continue
+              Sign In
+            </button>
+
+            <button
+              onClick={testCredentialSubmit}
+              className="button button-secondary loginButton"
+            >
+              Sign In via Test Credentials
             </button>
           </form>
 

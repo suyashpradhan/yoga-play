@@ -8,7 +8,6 @@ export const PlaylistCard = ({ playlistId, _id, videoId }) => {
   } = useVideoContext();
 
   const getVideo = videos.find((video) => video.videoId === videoId);
-  console.log(getVideo);
 
   return (
     <div className="playlistCard">
@@ -26,12 +25,18 @@ export const PlaylistCard = ({ playlistId, _id, videoId }) => {
         <div className="flex j-content-center a-items-center">
           <button
             className="button button-danger mT1"
-            onClick={() =>
-              dispatch({
-                type: "DELETE_VIDEO_FROM_PLAYLISTS",
-                payload: { playlistId, videoId },
-              })
-            }
+            onClick={() => {
+              setTimeout(() => {
+                dispatch({
+                  type: "DELETE_VIDEO_FROM_PLAYLISTS",
+                  payload: { playlistId, videoId },
+                });
+                dispatch({
+                  type: "TOGGLE_TOAST",
+                  payload: "Video Removed From Playlist ",
+                });
+              }, 1000);
+            }}
           >
             Delete video from playlist
           </button>

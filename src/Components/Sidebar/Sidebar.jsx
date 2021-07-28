@@ -36,15 +36,15 @@ export const Sidebar = () => {
         <li className="sidebarLists j-content-start a-items-center">
           <AiFillHeart className="sidebarIcon" />
           <Link to="/liked-videos">
-            <span>Liked Videos</span>
+            <span>Favourites</span>
           </Link>
         </li>
-        <li className="sidebarLists j-content-start a-items-center">
+        {/* <li className="sidebarLists j-content-start a-items-center">
           <AiOutlineHistory className="sidebarIcon" />
           <Link to="/history">
             <span>History</span>
           </Link>
-        </li>
+        </li> */}
       </ul>
     </aside>
   );
