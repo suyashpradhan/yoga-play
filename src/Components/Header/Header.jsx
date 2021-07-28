@@ -84,7 +84,7 @@ export const Header = () => {
       </div>
       <div className="rightNavBar  flex j-space-between a-items-center">
         <a
-          href="https://github.com/suyashpradhan"
+          href="https://github.com/suyashpradhan/yoga-play"
           target="_blank"
           rel="noreferrer"
         >
