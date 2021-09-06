@@ -44,6 +44,14 @@
     color: var(--white);
 }
 
+.no-login-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: 2rem 0;
+    line-height: 1.5;
+}
+
+
 @media screen and (max-width: 600px) and (min-width: 100px) {
     .sidebarToggled {
         left: -100% !important;

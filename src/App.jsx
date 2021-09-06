@@ -7,8 +7,6 @@ import { useAuth, useVideoContext } from "./context";
 import {
   fetchAllVideos,
   fetchFavouriteVideosList,
-  fetchUserWatchHistory,
-  fetchVideoNotes,
   fetchUserWatchLater,
 } from "./services";
 import { Toast } from "./components/Toast";

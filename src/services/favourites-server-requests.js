@@ -15,10 +15,10 @@ export const fetchFavouriteVideosList = async (dispatch) => {
 
 export const toggleFavouriteVideos = async (_id, dispatch) => {
   try {
+    dispatch({ type: "TOGGLE_TOAST", payload: "Adding Video..." });
     const { data } = await axios.post(favourites, {
       _id: _id,
     });
-    console.log(data);
     if (data.success) {
       dispatch({
         type: "TOGGLE_FAVOURITES",
